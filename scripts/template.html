@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>GOATiq Status</title>
+<meta name="description" content="Where GOAT's development stands: the work still ahead in every feature, and how many of its tasks are in progress, waiting for merge, blocked or finished. Updated from the team's planning board.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;800;900&family=Space+Mono:wght@400;700&display=swap">
+<style>
+/* Layout: goatiq.ai's language. Outlined nav bar, uppercase hero with the overall bar, a stat strip,
+   the features as a numbered framed list, then three framed panels. Single dark theme, as the site. */
+:root {
+  --bg: #101011;
+  --bg-deep: #0b0b0c;
+  --surface: #16161a;
+  --frame: rgba(236, 233, 223, .22);
+  --frame-strong: rgba(236, 233, 223, .85);
+  --cream: #faf2db;
+  --white: #ffffff;
+  --muted: #b4b4ba;
+  --dim: rgba(255, 255, 255, .14);
+  --green: #09c480;
+  --green-ink: #0e1a10;
+  --cyan: #49d1e2;
+  --yellow: #f4c63e;
+  --purple: #c6a2e5;
+  --red: #ff6a4d;
+  --grey: #6f6f78;
+  --sans: "Archivo", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "Space Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { background: var(--bg); }
+body {
+  margin: 0; color: var(--white); font: 16px/1.6 var(--sans);
+  background: var(--bg) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='72' viewBox='0 0 72 72'%3E%3Cpath d='M36 31v10M31 36h10' stroke='rgba(255,255,255,0.1)' stroke-width='1'/%3E%3C/svg%3E");
+}
+.wrap { max-width: 1160px; margin: 0 auto; padding-left: max(20px, env(safe-area-inset-left)); padding-right: max(20px, env(safe-area-inset-right)); }
+
+/* Nav */
+nav { padding-top: max(20px, env(safe-area-inset-top)); }
+.navbar { display: flex; align-items: stretch; border: 1px solid var(--frame-strong); background: var(--bg); min-height: 60px; }
+.mark { display: flex; align-items: center; padding: 0 22px; font: 900 22px/1 var(--sans); letter-spacing: .02em; border-right: 1px solid var(--frame-strong); }
+.mark span { color: var(--green); }
+.navlabel { display: flex; align-items: center; padding: 0 22px; font: 700 12px/1.2 var(--sans); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.navtime { margin-left: auto; display: flex; align-items: center; padding: 0 22px; background: var(--green); color: var(--green-ink); font: 800 12px/1.2 var(--sans); letter-spacing: .1em; text-transform: uppercase; }
+@media (max-width: 640px) { .navlabel { display: none; } .navtime { padding: 0 14px; font-size: 11px; } .mark { padding: 0 14px; } }
+
+/* Hero */
+.hero { padding-block: 64px 28px; display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 48px; align-items: end; }
+@media (max-width: 880px) { .hero { grid-template-columns: minmax(0, 1fr); gap: 32px; padding-top: 44px; } }
+.eyebrow { font: 700 12px/1 var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--green); margin: 0 0 18px; }
+h1 { font: 900 clamp(2.3rem, 5.4vw, 4rem)/.98 var(--sans); text-transform: uppercase; color: var(--cream); margin: 0 0 20px; letter-spacing: -.01em; text-wrap: balance; }
+h1 em { font-style: normal; color: var(--green); }
+.lede { margin: 0; color: var(--muted); max-width: 48ch; font-size: 1.05rem; }
+.overall { border: 1px solid var(--frame); background: var(--bg-deep); padding: 22px; box-shadow: 8px 8px 0 0 var(--green); }
+.overall .cap { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 14px; font: 700 12px/1 var(--sans); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.overall .cap b { font: 700 28px/1 var(--mono); color: var(--white); letter-spacing: 0; }
+.bar { display: flex; height: 18px; background: var(--dim); overflow: hidden; }
+.bar.thin { height: 8px; }
+.bar.mid { height: 12px; }
+.seg { height: 100%; }
+.legend { display: grid; grid-template-columns: repeat(auto-fill, minmax(165px, 1fr)); gap: 8px 16px; margin-top: 16px; font-size: 13px; color: var(--muted); }
+.legend b { font: 700 13px var(--mono); color: var(--white); margin-right: 6px; }
+.sw { display: inline-block; width: 10px; height: 10px; margin-right: 8px; vertical-align: -1px; }
+
+/* State strip: the six board states, also the page's color key */
+.stats { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); border: 1px solid var(--frame); margin-block: 28px 72px; background: var(--bg); }
+.stat { padding: 20px 20px 18px; border-right: 1px solid var(--frame); min-width: 0; border-top: 4px solid var(--c); }
+.stat:last-child { border-right: 0; }
+.stat .n { font: 700 2.3rem/1 var(--mono); font-variant-numeric: tabular-nums; }
+.stat .l { font: 700 11px/1.3 var(--sans); letter-spacing: .1em; text-transform: uppercase; color: var(--white); margin-top: 10px; }
+.stat .d { font-size: 12.5px; line-height: 1.35; color: var(--muted); margin-top: 4px; }
+@media (max-width: 980px) {
+  .stats { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .stat:nth-child(3n) { border-right: 0; }
+  .stat:nth-child(-n+3) { border-bottom: 1px solid var(--frame); }
+}
+@media (max-width: 560px) {
+  .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .stat { border-right: 1px solid var(--frame); border-bottom: 1px solid var(--frame); }
+  .stat:nth-child(2n) { border-right: 0; }
+  .stat:nth-last-child(-n+2) { border-bottom: 0; }
+}
+
+/* Sections */
+section { margin-bottom: 72px; }
+h2 { font: 900 clamp(1.6rem, 3.2vw, 2.4rem)/1 var(--sans); text-transform: uppercase; color: var(--cream); margin: 0; letter-spacing: -.005em; }
+.head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 14px 24px; margin-bottom: 24px; }
+
+/* Feature filter */
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { font: 700 11.5px/1 var(--sans); letter-spacing: .08em; text-transform: uppercase; padding: 10px 12px; border: 1px solid var(--frame); background: var(--bg); color: var(--muted); cursor: pointer; }
+.chip b { font: 700 12px var(--mono); margin-left: 6px; color: var(--white); }
+.chip:hover { border-color: var(--frame-strong); color: var(--white); }
+.chip[aria-pressed="true"] { background: var(--cream); border-color: var(--cream); color: var(--green-ink); }
+.chip[aria-pressed="true"] b { color: var(--green-ink); }
+.chip:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; }
+
+/* Feature cards */
+.fgrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+@media (max-width: 900px) { .fgrid { grid-template-columns: minmax(0, 1fr); } }
+.fcard { border: 1px solid var(--frame-strong); background: var(--bg); padding: 22px 22px 18px; min-width: 0; display: flex; flex-direction: column; gap: 16px; }
+.fcard[hidden] { display: none; }
+.ftop { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 14px; align-items: start; }
+.num { font: 700 20px/1.25 var(--mono); color: var(--muted); }
+.fname { font: 800 1.12rem/1.25 var(--sans); color: var(--cream); margin: 0; }
+.fsub { font-size: 13px; color: var(--muted); margin-top: 4px; }
+.pill { font: 800 10.5px/1 var(--sans); letter-spacing: .09em; text-transform: uppercase; padding: 7px 9px; white-space: nowrap; border: 1px solid var(--c); color: var(--c); }
+.pill.solid { background: var(--c); color: var(--green-ink); }
+.cells { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); border: 1px solid var(--frame); }
+.cell { padding: 10px 8px 9px; border-right: 1px solid var(--frame); border-top: 3px solid var(--c); min-width: 0; }
+.cell:last-child { border-right: 0; }
+.cell b { display: block; font: 700 1.35rem/1 var(--mono); font-variant-numeric: tabular-nums; }
+.cell span { display: block; font: 700 9.5px/1.25 var(--sans); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin-top: 6px; }
+.cell.zero { border-top-color: var(--dim); }
+.cell.zero b { color: rgba(255, 255, 255, .28); }
+@media (max-width: 480px) {
+  .cells { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .cell:nth-child(3n) { border-right: 0; }
+  .cell:nth-child(-n+3) { border-bottom: 1px solid var(--frame); }
+}
+.ffoot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 16px; font-size: 13px; color: var(--muted); margin-top: auto; }
+.ffoot b { color: var(--white); font: 700 13px var(--mono); }
+.none { color: var(--muted); border: 1px dashed var(--frame); padding: 20px; margin: 0; grid-column: 1 / -1; }
+
+/* Panels */
+.panels { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+@media (max-width: 940px) { .panels { grid-template-columns: minmax(0, 1fr); } }
+.panel { border: 1px solid var(--frame); background: var(--bg-deep); padding: 24px; min-width: 0; }
+.panel.lift { box-shadow: 6px 6px 0 0 var(--yellow); }
+.panel.lift-b { box-shadow: 6px 6px 0 0 var(--purple); }
+.panel h3 { font: 900 1.15rem/1.1 var(--sans); text-transform: uppercase; color: var(--cream); margin: 0 0 6px; }
+.panel .sub { color: var(--muted); font-size: 14px; margin: 0 0 20px; }
+.rows { display: grid; gap: 14px; }
+.brow { display: grid; grid-template-columns: 100px minmax(0, 1fr) 36px; align-items: center; gap: 12px; font-size: 14px; }
+.brow .v { text-align: right; font: 700 14px var(--mono); }
+.empty { color: var(--muted); font-size: 14px; border: 1px dashed var(--frame); padding: 16px; margin: 0; }
+.list { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.list li { display: flex; justify-content: space-between; gap: 12px; padding-bottom: 10px; border-bottom: 1px solid var(--frame); font-size: 15px; }
+.list li:last-child { border-bottom: 0; padding-bottom: 0; }
+.list b { font: 700 15px var(--mono); color: var(--green); }
+
+footer { border-top: 1px solid var(--frame); padding-block: 24px max(40px, env(safe-area-inset-bottom)); color: var(--muted); font-size: 13px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; }
+footer .mono { font-family: var(--mono); }
+</style>
+</head>
+<body>
+<nav class="wrap">
+  <div class="navbar">
+    <div class="mark" aria-label="GOATiq">GOAT<span>IQ</span>
+    </div>
+    <div class="navlabel">Development status</div>
+    <div class="navtime" id="updated"></div>
+  </div>
+</nav>
+
+<header class="wrap hero">
+  <div>
+    <p class="eyebrow" id="eyebrow"></p>
+    <h1 id="headline"></h1>
+    <p class="lede" id="lede"></p>
+  </div>
+  <div class="overall">
+    <div class="cap"><span>Work still ahead</span><b id="overall-n"></b></div>
+    <div class="bar" id="overall-bar" role="img"></div>
+    <div class="legend" id="overall-legend"></div>
+  </div>
+</header>
+
+<div class="wrap"><div class="stats" id="stats"></div></div>
+
+<main class="wrap">
+  <section>
+    <div class="head">
+      <div><p class="eyebrow">Feature by feature</p><h2>Features</h2></div>
+      <div class="chips" id="chips" role="group" aria-label="Show features by status"></div>
+    </div>
+    <div class="fgrid" id="features"></div>
+  </section>
+
+  <section class="panels">
+    <div class="panel">
+      <h3>This week</h3>
+      <p class="sub" id="week-sub"></p>
+      <div id="week"></div>
+    </div>
+    <div class="panel lift">
+      <h3>Work by area</h3>
+      <p class="sub">Open tasks, split by state</p>
+      <div class="rows" id="areas"></div>
+      <div class="legend" id="areas-key"></div>
+    </div>
+    <div class="panel lift-b">
+      <h3>Releases</h3>
+      <p class="sub">Open tasks planned for each release</p>
+      <div id="releases"></div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h3>Finished in the last two weeks</h3>
+    <p class="sub" id="recent-sub"></p>
+    <div id="recent"></div>
+  </section>
+</main>
+
+<footer class="wrap">
+  <span>Generated from the GOAT team's planning board. Counts only; individual tasks stay on the board.</span>
+  <span class="mono">Refreshed every 30 minutes</span>
+</footer>
+
+<script>
+const S = /*__STATUS__*/;
+
+// One order everywhere (bars, keys, cells): the way work flows, finished last.
+const STATES = [
+  ["progress", "In progress", "--cyan", "Someone is working on it"],
+  ["review", "Waiting for merge", "--purple", "Pull request open, in review"],
+  ["blocked", "Blocked", "--red", "Waiting on other work or a decision"],
+  ["ready", "Ready", "--yellow", "Can start, nobody has yet"],
+  ["backlog", "Backlog", "--grey", "Not ready to start"],
+  ["done", "Finished", "--green", "Merged and closed"],
+];
+const FEATURE_STATUS = {
+  done: ["Finished", "--green", true],
+  progress: ["In progress", "--cyan", true],
+  blocked: ["Blocked", "--red", false],
+  started: ["Paused", "--yellow", false],
+  todo: ["Not started", "--muted", false],
+};
+const el = (id) => document.getElementById(id);
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const pct = (a, b) => (b ? Math.round((100 * a) / b) : 0);
+const plural = (n, one, many) => `${n} ${n === 1 ? one : many}`;
+const label = (counts) => STATES.map(([k, l]) => `${l}: ${counts[k] || 0}`).join(", ");
+
+function segments(counts, total) {
+  return STATES.filter(([k]) => counts[k]).map(([k, l, color]) =>
+    `<div class="seg" title="${l}: ${counts[k]}" style="width:${(100 * counts[k]) / total}%;background:var(${color})"></div>`
+  ).join("");
+}
+
+// Every bar on the page gets this key next to it, so no color goes unexplained.
+function key(counts) {
+  return STATES.map(([k, l, color]) =>
+    `<span><span class="sw" style="background:var(${color})"></span>${counts ? `<b>${counts[k] || 0}</b>` : ""}${l}</span>`).join("");
+}
+
+const t = S.totals;
+const moving = t.progress + t.review;
+const open = t.tasks - t.done;
+const since = new Date(S.since + "T12:00:00").toLocaleDateString("en-US", { month: "short", day: "numeric" });
+STATES.find(([k]) => k === "done")[3] = `Merged and closed since ${since}`;
+el("eyebrow").textContent = `The work still ahead, tracked since ${since}`;
+el("updated").textContent = "Updated " + new Date(S.updated).toLocaleString("en-US", { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" });
+el("headline").innerHTML = `<em>${open}</em> tasks to go. <em>${moving}</em> under way.`;
+el("lede").textContent = `This page follows the work that is left, in ${S.features.length} features. What was built before ${since} is not counted here. ${t.done ? `Since then, ${plural(t.done, "task was", "tasks were")} finished. ` : ""}Right now ${plural(t.progress, "task is", "tasks are")} in progress, ${plural(t.review, "is", "are")} waiting for merge and ${plural(t.blocked, "is", "are")} blocked.`;
+el("overall-n").textContent = `${open} open`;
+el("overall-bar").innerHTML = segments(t, t.tasks);
+el("overall-bar").setAttribute("aria-label", label(t));
+el("overall-legend").innerHTML = key(t);
+el("stats").innerHTML = STATES.map(([k, l, c, d]) =>
+  `<div class="stat" style="--c:var(${c})"><div class="n">${t[k]}</div><div class="l">${l}</div><div class="d">${d}</div></div>`
+).join("");
+
+el("features").innerHTML = S.features.map((f, i) => {
+  const [name, color, solid] = FEATURE_STATUS[f.status];
+  const open = f.total - f.counts.done;
+  const under = f.counts.progress + f.counts.review;
+  const areas = f.openByArea.map((a) => `<b>${a.open}</b> ${esc(a.name)}`).join(" · ");
+  return `<article class="fcard" data-status="${f.status}">
+    <div class="ftop">
+      <div class="num">${String(i + 1).padStart(2, "0")}</div>
+      <div><h3 class="fname">${esc(f.name)}</h3><div class="fsub">${open ? `${plural(open, "task", "tasks")} to go${under ? `, ${under} under way` : ""}` : `All ${plural(f.total, "task", "tasks")} finished`}${f.release ? ` · ${esc(f.release)}` : ""}</div></div>
+      <span class="pill${solid ? " solid" : ""}" style="--c:var(${color})">${name}</span>
+    </div>
+    <div class="bar mid" role="img" aria-label="${label(f.counts)}">${segments(f.counts, f.total)}</div>
+    <div class="cells">${STATES.map(([k, l, c]) =>
+      `<div class="cell${f.counts[k] ? "" : " zero"}" style="--c:var(${c})"><b>${f.counts[k]}</b><span>${l}</span></div>`).join("")}</div>
+    <div class="ffoot"><span>${open ? `Open work: ${areas}` : "Nothing left open"}</span><span><b>${f.counts.done}</b> of ${f.total} finished</span></div>
+  </article>`;
+}).join("") + `<p class="none" id="none" hidden>No features in this state right now.</p>`;
+
+const FILTERS = [["all", "All"], ["progress", "In progress"], ["blocked", "Blocked"], ["started", "Paused"], ["todo", "Not started"], ["done", "Finished"]];
+function show(which) {
+  let shown = 0;
+  document.querySelectorAll(".fcard").forEach((c) => { c.hidden = which !== "all" && c.dataset.status !== which; shown += !c.hidden; });
+  el("none").hidden = shown > 0;
+  document.querySelectorAll(".chip").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.f === which)));
+}
+el("chips").innerHTML = FILTERS.filter(([k]) => k === "all" || S.featureStatus[k]).map(([k, l]) =>
+  `<button class="chip" type="button" data-f="${k}">${l}<b>${k === "all" ? S.features.length : S.featureStatus[k]}</b></button>`).join("");
+el("chips").addEventListener("click", (e) => { const b = e.target.closest(".chip"); if (b) show(b.dataset.f); });
+show("all");
+
+if (S.week.planned) {
+  el("week-sub").textContent = `${S.week.title}: ${S.week.done} of ${S.week.planned} planned tasks done`;
+  el("week").innerHTML = `<div class="bar">${segments(S.week.counts, S.week.planned)}</div><div class="legend">${key(S.week.counts)}</div>`;
+} else {
+  el("week-sub").textContent = "The current one-week iteration";
+  el("week").innerHTML = `<p class="empty">No tasks are planned for this week yet. They appear here once the team's weekly planning picks them.</p>`;
+}
+
+const maxArea = Math.max(1, ...S.areas.map((a) => a.open));
+el("areas").innerHTML = S.areas.map((a) =>
+  `<div class="brow"><span>${esc(a.name)}</span><div class="bar thin" style="width:${(100 * a.open) / maxArea}%">${segments(a.counts, a.open)}</div><span class="v">${a.open}</span></div>`
+).join("");
+
+if (S.releases.some((r) => r.name !== "Not set")) {
+  const maxRel = Math.max(1, ...S.releases.map((r) => r.open));
+  el("releases").innerHTML = `<div class="rows">${S.releases.map((r) =>
+    `<div class="brow"><span>${esc(r.name)}</span><div class="bar thin" style="width:${(100 * r.open) / maxRel}%"><div class="seg" style="width:100%;background:var(--purple)"></div></div><span class="v">${r.open}</span></div>`
+  ).join("")}</div>`;
+} else {
+  el("releases").innerHTML = `<p class="empty">Tasks are not assigned to a release yet. This fills in once the team plans its releases.</p>`;
+}
+
+el("areas-key").innerHTML = key();
+el("recent-sub").textContent = S.recent.total ? `${S.recent.total} tasks finished, by feature` : "Tasks closed in the last 14 days";
+el("recent").innerHTML = S.recent.total
+  ? `<ul class="list">${S.recent.byFeature.map((r) => `<li><span>${esc(r.name)}</span><b>${r.count}</b></li>`).join("")}</ul>`
+  : `<p class="empty">No tasks were finished in the last two weeks.</p>`;
+</script>
+</body>
+</html>

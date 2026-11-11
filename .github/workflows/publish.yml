@@ -1,0 +1,58 @@
+name: Publish status page
+
+# Rebuilds GOAT's public status page from the Goat Tracker board and publishes
+# it with GitHub Pages. Board changes fire no event in this repository, so the
+# page rebuilds every 30 minutes and on demand from the Actions tab.
+on:
+  schedule:
+    - cron: "7,37 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    env:
+      GOAT_BOARD_TOKEN: ${{ secrets.GOAT_BOARD_TOKEN }}
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      # Without the token the board can't be read, so the last page committed
+      # to site/ is published as it is.
+      - name: Build the page from the board
+        if: env.GOAT_BOARD_TOKEN != ''
+        run: python3 scripts/build.py
+      - name: Say why the page was not rebuilt
+        if: env.GOAT_BOARD_TOKEN == ''
+        run: echo "::warning::GOAT_BOARD_TOKEN is not set. Published the last committed page without reading the board."
+      # The page is committed with its numbers, so the repository always holds
+      # what was last published. Committing only when they change also keeps it active:
+      # GitHub turns off scheduled workflows in public repositories after 60
+      # days without activity.
+      - name: Record the numbers when they changed
+        run: |
+          if git diff --quiet -I '"updated"' site/status.json; then
+            echo "Numbers unchanged."
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add site
+            git commit -m "Record the board's numbers"
+            git push
+          fi
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+      - id: deploy
+        uses: actions/deploy-pages@v4
