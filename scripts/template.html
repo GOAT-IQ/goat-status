@@ -103,6 +103,7 @@ h2 { font: 900 clamp(1.6rem, 3.2vw, 2.4rem)/1 var(--sans); text-transform: upper
 
 .filters { display: grid; gap: 8px; justify-items: end; }
 @media (max-width: 900px) { .filters { justify-items: start; } }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 .note { margin: 0; font-size: 13px; color: var(--muted); max-width: 46ch; }
 
 /* Release cards */
@@ -143,7 +144,20 @@ h2 { font: 900 clamp(1.6rem, 3.2vw, 2.4rem)/1 var(--sans); text-transform: upper
   .cell:nth-child(3n) { border-right: 0; }
   .cell:nth-child(-n+3) { border-bottom: 1px solid var(--frame); }
 }
-.fcard .mix { margin-top: auto; padding-top: 2px; }
+.fcard .mix { padding-top: 2px; }
+.tasks { margin-top: auto; border-top: 1px solid var(--frame); padding-top: 12px; }
+.tasks summary { cursor: pointer; font: 700 11px/1 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--muted); list-style: none; display: flex; justify-content: space-between; gap: 12px; }
+.tasks summary::-webkit-details-marker { display: none; }
+.tasks summary::after { content: "Show"; color: var(--green); }
+.tasks[open] summary::after { content: "Hide"; }
+.tasks summary:hover { color: var(--white); }
+.tasks summary:focus-visible { outline: 2px solid var(--green); outline-offset: 4px; }
+.tlist { list-style: none; margin: 12px 0 0; padding: 0; display: grid; gap: 9px; }
+.tlist li { display: grid; grid-template-columns: 10px minmax(0, 1fr) auto; gap: 10px; align-items: baseline; font-size: 14px; line-height: 1.35; }
+.tlist .dot { width: 10px; height: 10px; background: var(--c); transform: translateY(1px); }
+.tlist .done { color: var(--muted); text-decoration: line-through; }
+.tlist .meta { font: 400 11.5px/1.2 var(--mono); color: var(--muted); white-space: nowrap; text-align: right; }
+@media (max-width: 480px) { .tlist li { grid-template-columns: 10px minmax(0, 1fr); } .tlist .meta { grid-column: 2; text-align: left; } }
 .none { color: var(--muted); border: 1px dashed var(--frame); padding: 20px; margin: 0; grid-column: 1 / -1; }
 
 /* Panels */
@@ -236,7 +250,7 @@ footer .mono { font-family: var(--mono); }
 </main>
 
 <footer class="wrap">
-  <span>Generated from the GOAT team's planning board. Counts only; task titles stay on the board.</span>
+  <span>Generated from the GOAT team's planning board. Task details and owners stay on the board.</span>
   <span class="mono">Refreshed every 30 minutes</span>
 </footer>
 
@@ -329,7 +343,16 @@ function featureStatus(c, total) {
   return c.done ? "started" : "todo";
 }
 const FILTERS = [["all", "All"], ["progress", "In progress"], ["blocked", "Blocked"], ["started", "Paused"], ["todo", "Not started"], ["done", "Finished"]];
-const view = { release: "all", status: "all" };
+const view = { release: "all", status: "all", tasks: false };
+const STATE = Object.fromEntries(STATES.map(([k, l, c], i) => [k, { label: l, color: c, order: i }]));
+const RELEASE_SHORT = { "General Availability": "GA" };
+function taskList(rows) {
+  const sorted = [...rows].sort((a, b) => STATE[a[0]].order - STATE[b[0]].order || a[5] - b[5]);
+  return `<details class="tasks"${view.tasks ? " open" : ""}><summary>${plural(rows.length, "task", "tasks")}</summary><ul class="tlist">${sorted.map((r) => {
+    const meta = [r[2], view.release === "all" ? (RELEASE_SHORT[r[1]] || r[1]) : ""].filter(Boolean).join(" · ");
+    return `<li><span class="dot" style="--c:var(${STATE[r[0]].color})" title="${STATE[r[0]].label}"></span><span${r[0] === "done" ? ' class="done"' : ""}>${esc(r[6])}<span class="sr"> (${STATE[r[0]].label})</span></span><span class="meta">${esc(meta)}</span></li>`;
+  }).join("")}</ul></details>`;
+}
 
 function renderFeatures() {
   const cards = S.features.map((f, i) => {
@@ -345,7 +368,8 @@ function renderFeatures() {
   el("chips").innerHTML = FILTERS.filter(([k]) => k === "all" || byStatus[k]).map(([k, l]) =>
     `<button class="chip" type="button" data-f="${k}" aria-pressed="${k === view.status}">${l}<b>${k === "all" ? cards.length : byStatus[k]}</b></button>`).join("");
   el("rchips").innerHTML = [["all", "All releases"], ...S.releases.map((r) => [r.name, r.name])].map(([k, l]) =>
-    `<button class="chip" type="button" data-r="${esc(k)}" aria-pressed="${k === view.release}">${esc(l)}</button>`).join("");
+    `<button class="chip" type="button" data-r="${esc(k)}" aria-pressed="${k === view.release}">${esc(l)}</button>`).join("") +
+    `<button class="chip" type="button" data-t="1" aria-pressed="${view.tasks}">${view.tasks ? "Hide all tasks" : "Show all tasks"}</button>`;
 
   el("features").innerHTML = cards.filter((c) => view.status === "all" || c.status === view.status).map(({ f, i, rows, counts, status }) => {
     const [name, color, solid] = FEATURE_STATUS[status];
@@ -369,13 +393,14 @@ function renderFeatures() {
       <dt>Size</dt><dd>${mix(tally(openRows, 2), SIZES)}</dd>
       <dt>Open in</dt><dd>${mix(tally(openRows, 4), [["Frontend", "Frontend"], ["Backend", "Backend"], ["DevOps", "DevOps"], ["Docs", "Docs"]])}</dd>
     </dl>` : ""}
+    ${taskList(rows)}
   </article>`;
   }).join("") || `<p class="none">No features match this filter.</p>`;
 }
 document.querySelector(".filters").addEventListener("click", (e) => {
   const b = e.target.closest(".chip");
   if (!b) return;
-  if (b.dataset.r) view.release = b.dataset.r; else view.status = b.dataset.f;
+  if (b.dataset.t) view.tasks = !view.tasks; else if (b.dataset.r) view.release = b.dataset.r; else view.status = b.dataset.f;
   renderFeatures();
 });
 renderFeatures();

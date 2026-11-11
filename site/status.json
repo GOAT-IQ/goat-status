@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-11T20:24:06.204296+00:00",
+ "updated": "2026-11-11T20:42:00.340439+00:00",
  "since": "2026-11-09",
  "totals": {
   "done": 4,
@@ -34,70 +34,90 @@
      "Beta",
      "S",
      "P0",
-     "Frontend"
+     "Frontend",
+     2,
+     "Delete a collection and its dashboards"
     ],
     [
      "review",
      "Beta",
      "M",
      "P0",
-     "Frontend"
+     "Frontend",
+     3,
+     "Delete screens for datasets, dashboards, and charts"
     ],
     [
      "review",
      "Beta",
      "S",
      "P0",
-     "Frontend"
+     "Frontend",
+     4,
+     "Builder accepts a delete that also removes charts"
     ],
     [
      "review",
      "Beta",
      "S",
      "P0",
-     "Frontend"
+     "Frontend",
+     5,
+     "Restore a deleted chart on undo, redo, or paste"
     ],
     [
      "review",
      "Beta",
      "S",
      "P0",
-     "Frontend"
+     "Frontend",
+     6,
+     "Warn about dashboards with broken tiles"
     ],
     [
      "blocked",
      "Beta",
      "S",
      "P0",
-     "Backend"
+     "Backend",
+     7,
+     "Require the preview before every delete"
     ],
     [
      "done",
      "",
      "",
      "",
-     "Backend"
+     "Backend",
+     8,
+     "Remove deleted charts from open drafts"
     ],
     [
      "done",
      "",
      "",
      "",
-     "Backend"
+     "Backend",
+     9,
+     "Move a dashboard to another collection (backend)"
     ],
     [
      "review",
      "Beta",
      "S",
      "P0",
-     "Frontend"
+     "Frontend",
+     10,
+     "Move dashboard dialog"
     ],
     [
      "progress",
      "Beta",
      "S",
      "P0",
-     "Backend"
+     "Backend",
+     11,
+     "Block tiles that use another app's dataset"
     ]
    ],
    "openByArea": [
@@ -129,35 +149,45 @@
      "Beta",
      "S",
      "P1",
-     "Frontend"
+     "Frontend",
+     13,
+     "Code cleanup before the drafts screens"
     ],
     [
      "progress",
      "Beta",
      "M",
      "P1",
-     "Backend"
+     "Backend",
+     14,
+     "Drafts backend"
     ],
     [
      "done",
      "",
      "",
      "",
-     "Backend"
+     "Backend",
+     15,
+     "Version history paging and \"who is editing\""
     ],
     [
      "blocked",
      "Beta",
      "M",
      "P1",
-     "Frontend"
+     "Frontend",
+     16,
+     "Review the drafts screens"
     ],
     [
      "blocked",
      "Beta",
      "S",
      "P1",
-     "DevOps"
+     "DevOps",
+     17,
+     "Turn drafts on in dev, then QA"
     ]
    ],
    "openByArea": [
@@ -193,56 +223,72 @@
      "General Availability",
      "S",
      "P1",
-     "Backend"
+     "Backend",
+     19,
+     "Write the AI spec"
     ],
     [
      "blocked",
      "General Availability",
      "L",
      "P1",
-     "Backend"
+     "Backend",
+     20,
+     "AI backend and MCP connector"
     ],
     [
      "blocked",
      "General Availability",
      "L",
      "P1",
-     "Frontend"
+     "Frontend",
+     21,
+     "AI screens"
     ],
     [
      "blocked",
      "General Availability",
      "M",
      "P1",
-     "Backend"
+     "Backend",
+     22,
+     "AI checks: answer tests, cost limit, fallback"
     ],
     [
      "blocked",
      "General Availability",
      "S",
      "P1",
-     "Backend"
+     "Backend",
+     23,
+     "Test Vertex AI in a temporary project"
     ],
     [
      "blocked",
      "General Availability",
      "M",
      "P1",
-     "Backend"
+     "Backend",
+     24,
+     "Describe the full API in OpenAPI"
     ],
     [
      "backlog",
      "Later",
      "M",
      "P2",
-     "Backend"
+     "Backend",
+     93,
+     "Product help in the AI assistant"
     ],
     [
      "backlog",
      "Later",
      "",
      "P2",
-     "Backend"
+     "Backend",
+     95,
+     "AI statistics for the viewer's own tenant"
     ]
    ],
    "openByArea": [
@@ -274,42 +320,54 @@
      "General Availability",
      "L",
      "P1",
-     "Backend"
+     "Backend",
+     26,
+     "First version of formulas"
     ],
     [
      "progress",
      "General Availability",
      "",
      "P1",
-     "Backend"
+     "Backend",
+     27,
+     "Formulas on existing datasets"
     ],
     [
      "progress",
      "General Availability",
      "",
      "P1",
-     "Backend"
+     "Backend",
+     28,
+     "Formulas in the semantic layer and query engine"
     ],
     [
      "backlog",
      "Later",
      "",
      "P2",
-     "Frontend"
+     "Frontend",
+     29,
+     "Formulas tab"
     ],
     [
      "progress",
      "General Availability",
      "S",
      "P1",
-     "Backend"
+     "Backend",
+     90,
+     "Formula groundwork in the semantic layer"
     ],
     [
      "backlog",
      "General Availability",
      "M",
      "P1",
-     "Frontend"
+     "Frontend",
+     91,
+     "Screens for calculated columns and measures"
     ]
    ],
    "openByArea": [
@@ -341,28 +399,36 @@
      "General Availability",
      "S",
      "P1",
-     "Frontend"
+     "Frontend",
+     31,
+     "Review the relative dates and comparisons contract"
     ],
     [
      "blocked",
      "General Availability",
      "",
      "P1",
-     "Backend"
+     "Backend",
+     32,
+     "Relative dates and metric comparisons"
     ],
     [
      "backlog",
      "Later",
      "M",
      "P2",
-     "Backend"
+     "Backend",
+     33,
+     "Fiscal calendars, week start, and time zones"
     ],
     [
      "ready",
      "Beta",
      "S",
      "P0",
-     "Frontend"
+     "Frontend",
+     34,
+     "Confirm the sales CSV loads on QA"
     ]
    ],
    "openByArea": [
@@ -394,63 +460,81 @@
      "Beta",
      "M",
      "P0",
-     "Frontend"
+     "Frontend",
+     36,
+     "Drill-down breadcrumbs and events for the host page"
     ],
     [
      "backlog",
      "Later",
      "M",
      "P2",
-     "Frontend"
+     "Frontend",
+     37,
+     "Export a chart or table"
     ],
     [
      "ready",
      "Beta",
      "M",
      "P0",
-     "Frontend"
+     "Frontend",
+     38,
+     "Match themes to the CSS variables"
     ],
     [
      "ready",
      "Beta",
      "M",
      "P0",
-     "Frontend"
+     "Frontend",
+     39,
+     "Finish the viewer filters band"
     ],
     [
      "blocked",
      "Beta",
      "",
      "P0",
-     "Frontend"
+     "Frontend",
+     40,
+     "Button actions, including reset all"
     ],
     [
      "backlog",
      "General Availability",
      "M",
      "P1",
-     "Backend"
+     "Backend",
+     41,
+     "Drill-through to another dashboard"
     ],
     [
      "done",
      "",
      "",
      "",
-     "Frontend"
+     "Frontend",
+     42,
+     "Review the Chart Builder for unfinished work"
     ],
     [
      "ready",
      "Beta",
      "S",
      "P0",
-     "Frontend"
+     "Frontend",
+     43,
+     "Decide the remaining drill-down fixes"
     ],
     [
      "progress",
      "Beta",
      "M",
      "P0",
-     "Frontend"
+     "Frontend",
+     88,
+     "Fix the Chart Builder gaps from the review"
     ]
    ],
    "openByArea": [
@@ -482,91 +566,117 @@
      "General Availability",
      "S",
      "P0",
-     "Frontend"
+     "Frontend",
+     45,
+     "Warn before removing a tenant key"
     ],
     [
      "backlog",
      "General Availability",
      "M",
      "P1",
-     "Backend"
+     "Backend",
+     46,
+     "Row access per collection and a rule for tenant authors (backend)"
     ],
     [
      "blocked",
      "General Availability",
      "M",
      "P1",
-     "Frontend"
+     "Frontend",
+     47,
+     "Screens for the row access settings"
     ],
     [
      "review",
      "Beta",
      "M",
      "P0",
-     "Frontend"
+     "Frontend",
+     48,
+     "Tenant authoring screens"
     ],
     [
      "backlog",
      "Later",
      "",
      "P2",
-     "Backend"
+     "Backend",
+     49,
+     "Design per-tenant row access and tenant author management"
     ],
     [
      "blocked",
      "General Availability",
      "S",
      "P2",
-     "Frontend"
+     "Frontend",
+     50,
+     "\"Share, keep rows off\" action"
     ],
     [
      "blocked",
      "General Availability",
      "S",
      "P2",
-     "Frontend"
+     "Frontend",
+     51,
+     "Share confirmation in the chart editor"
     ],
     [
      "review",
      "General Availability",
      "S",
      "P0",
-     "Frontend"
+     "Frontend",
+     52,
+     "Row access in the single-tenant edition"
     ],
     [
      "review",
      "General Availability",
      "S",
      "P1",
-     "Frontend"
+     "Frontend",
+     53,
+     "Show composite tenant keys in the Shape step"
     ],
     [
      "progress",
      "General Availability",
      "S",
      "P1",
-     "Backend"
+     "Backend",
+     54,
+     "Check the tenant author rule in the backend"
     ],
     [
      "progress",
      "General Availability",
      "S",
      "P0",
-     "Backend"
+     "Backend",
+     55,
+     "Stop two apps from sharing a warehouse table"
     ],
     [
      "review",
      "Beta",
      "S",
      "P0",
-     "Frontend"
+     "Frontend",
+     86,
+     "Switch for automatic tenant registration"
     ],
     [
      "progress",
      "General Availability",
      "S",
      "P0",
-     "DevOps"
+     "DevOps",
+     89,
+     "List datasets that show all rows to every tenant"
     ]
    ],
    "openByArea": [
@@ -602,35 +712,45 @@
      "General Availability",
      "S",
      "P1",
-     "DevOps"
+     "DevOps",
+     57,
+     "Full test install"
     ],
     [
      "blocked",
      "General Availability",
      "L",
      "P1",
-     "DevOps"
+     "DevOps",
+     58,
+     "Second factor and alerts for the emergency admin"
     ],
     [
      "ready",
      "General Availability",
      "M",
      "P1",
-     "Backend"
+     "Backend",
+     59,
+     "Enforce the content security policy"
     ],
     [
      "progress",
      "General Availability",
      "M",
      "P1",
-     "Backend"
+     "Backend",
+     60,
+     "SAML and OIDC sign-in"
     ],
     [
      "ready",
      "General Availability",
      "S",
      "P1",
-     "DevOps"
+     "DevOps",
+     61,
+     "Sign-in cutover steps for production"
     ]
    ],
    "openByArea": [
@@ -662,49 +782,63 @@
      "Beta",
      "M",
      "P0",
-     "Frontend"
+     "Frontend",
+     63,
+     "Move remaining lists to the paged API"
     ],
     [
      "progress",
      "General Availability",
      "M",
      "P1",
-     "Backend"
+     "Backend",
+     64,
+     "Cursor paging for lists"
     ],
     [
      "ready",
      "General Availability",
      "S",
      "P1",
-     "Backend"
+     "Backend",
+     65,
+     "Measure the cost of viewer loads"
     ],
     [
      "progress",
      "General Availability",
      "S",
      "P1",
-     "Backend"
+     "Backend",
+     66,
+     "Dataset name checks on large installs"
     ],
     [
      "progress",
      "General Availability",
      "S",
      "P1",
-     "Backend"
+     "Backend",
+     67,
+     "Fix reloading a file dataset with a composite tenant key"
     ],
     [
      "progress",
      "General Availability",
      "S",
      "P1",
-     "Backend"
+     "Backend",
+     68,
+     "Make admin creates safe to retry"
     ],
     [
      "backlog",
      "Later",
      "",
      "P2",
-     "Backend"
+     "Backend",
+     94,
+     "Combine datasets with transforms and joins"
     ]
    ],
    "openByArea": [
@@ -736,56 +870,72 @@
      "Beta",
      "S",
      "P0",
-     "DevOps"
+     "DevOps",
+     70,
+     "Release backend work to dev"
     ],
     [
      "ready",
      "Marketplace",
      "S",
      "P1",
-     "DevOps"
+     "DevOps",
+     71,
+     "Fresh install checks"
     ],
     [
      "backlog",
      "General Availability",
      "",
      "P1",
-     "DevOps"
+     "DevOps",
+     72,
+     "Design monitoring, alerting, and failover"
     ],
     [
      "ready",
      "General Availability",
      "S",
      "P1",
-     "DevOps"
+     "DevOps",
+     73,
+     "CI for the install module"
     ],
     [
      "ready",
      "General Availability",
      "M",
      "P1",
-     "DevOps"
+     "DevOps",
+     74,
+     "Frontend CI"
     ],
     [
      "ready",
      "",
      "S",
      "P2",
-     "DevOps"
+     "DevOps",
+     75,
+     "Line endings file for goat-install"
     ],
     [
      "ready",
      "Marketplace",
      "",
      "P1",
-     "DevOps"
+     "DevOps",
+     76,
+     "Marketplace conversation and pricing"
     ],
     [
      "progress",
      "",
      "S",
      "",
-     "Backend"
+     "Backend",
+     92,
+     "Move the API to /api/v1"
     ]
    ],
    "openByArea": [
@@ -817,35 +967,45 @@
      "General Availability",
      "",
      "P1",
-     "Frontend"
+     "Frontend",
+     78,
+     "Design guided onboarding"
     ],
     [
      "blocked",
      "General Availability",
      "",
      "P1",
-     "Frontend"
+     "Frontend",
+     79,
+     "Build guided onboarding"
     ],
     [
      "backlog",
      "General Availability",
      "",
      "P1",
-     "Docs"
+     "Docs",
+     80,
+     "Tutorials"
     ],
     [
      "backlog",
      "General Availability",
      "",
      "P1",
-     "Backend"
+     "Backend",
+     81,
+     "Usage data for the CRM and analytics"
     ],
     [
      "review",
      "Beta",
      "M",
      "P1",
-     "Docs"
+     "Docs",
+     87,
+     "Review the docs site draft"
     ]
    ],
    "openByArea": [
@@ -881,21 +1041,27 @@
      "Beta",
      "M",
      "P2",
-     "Frontend"
+     "Frontend",
+     83,
+     "Small frontend fixes"
     ],
     [
      "ready",
      "",
      "S",
      "P2",
-     "Frontend"
+     "Frontend",
+     84,
+     "Fix two tests that fail on Windows"
     ],
     [
      "ready",
      "",
      "S",
      "P2",
-     "Docs"
+     "Docs",
+     85,
+     "Review open docs pull requests"
     ]
    ],
    "openByArea": [

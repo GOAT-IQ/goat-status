@@ -1,9 +1,8 @@
 """Builds site/index.html, GOAT's public status page, from the Goat Tracker board.
 
-The page is public, so only counts leave the board: for each feature and each
-release, how many tasks sit in each board Status, with their Size and Priority,
-plus totals per area and for the current iteration. Task titles, people and
-"Waiting on" reasons are read to compute the counts and never written out.
+The page is public. It shows each feature's tasks by title, with their board
+Status, Size, Priority, Release and Area, and the totals built from them.
+Descriptions, people and "Waiting on" reasons never leave the board.
 Standard library only, so the workflow needs no install step.
 
 Environment:
@@ -110,8 +109,9 @@ def feature_row(feature, tasks):
     open_tasks = [t for t in tasks if state(t) != "done"]
     return {
         "name": feature["title"], "total": len(tasks), "counts": c, "status": feature_status(c, len(tasks)),
-        # One row per task, with no title: the page filters and recounts these by release.
-        "tasks": [[state(t), t["release"] or "", t["size"] or "", t["priority"] or "", t["area"] or ""] for t in tasks],
+        # One row per task: the page filters and recounts these by release, and lists them by title.
+        "tasks": [[state(t), t["release"] or "", t["size"] or "", t["priority"] or "", t["area"] or "", t["number"], t["title"]]
+                  for t in sorted(tasks, key=lambda t: t["number"])],
         "openByArea": [{"name": a, "open": n} for a in AREAS if (n := sum(1 for t in open_tasks if t["area"] == a))],
     }
 
