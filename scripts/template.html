@@ -100,6 +100,25 @@ h2 { font: 900 clamp(1.6rem, 3.2vw, 2.4rem)/1 var(--sans); text-transform: upper
 .chip[aria-pressed="true"] b { color: var(--green-ink); }
 .chip:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; }
 
+.filters { display: grid; gap: 8px; justify-items: end; }
+@media (max-width: 900px) { .filters { justify-items: start; } }
+.note { margin: 0; font-size: 13px; color: var(--muted); max-width: 46ch; }
+
+/* Release cards */
+.rgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 22px; }
+.rcard { border: 1px solid var(--frame); background: var(--bg-deep); padding: 22px; min-width: 0; display: grid; gap: 14px; align-content: start; }
+.rcard.first { box-shadow: 6px 6px 0 0 var(--green); border-color: var(--frame-strong); }
+.rtop { display: flex; justify-content: space-between; align-items: start; gap: 14px; }
+.rname { font: 900 1.15rem/1.15 var(--sans); text-transform: uppercase; color: var(--cream); margin: 0; }
+.rdesc { font-size: 13px; color: var(--muted); margin-top: 6px; }
+.rnum { text-align: right; white-space: nowrap; }
+.rnum b { display: block; font: 700 2.1rem/1 var(--mono); }
+.rnum span { font: 700 10.5px/1 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--muted); }
+.mix { display: grid; grid-template-columns: 74px minmax(0, 1fr); gap: 6px 12px; font-size: 13px; color: var(--muted); margin: 0; }
+.mix dt { font: 700 10.5px/1.7 var(--sans); letter-spacing: .09em; text-transform: uppercase; }
+.mix dd { margin: 0; }
+.mix b { font: 700 13px var(--mono); color: var(--white); }
+
 /* Feature cards */
 .fgrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
 @media (max-width: 900px) { .fgrid { grid-template-columns: minmax(0, 1fr); } }
@@ -123,12 +142,11 @@ h2 { font: 900 clamp(1.6rem, 3.2vw, 2.4rem)/1 var(--sans); text-transform: upper
   .cell:nth-child(3n) { border-right: 0; }
   .cell:nth-child(-n+3) { border-bottom: 1px solid var(--frame); }
 }
-.ffoot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 16px; font-size: 13px; color: var(--muted); margin-top: auto; }
-.ffoot b { color: var(--white); font: 700 13px var(--mono); }
+.fcard .mix { margin-top: auto; padding-top: 2px; }
 .none { color: var(--muted); border: 1px dashed var(--frame); padding: 20px; margin: 0; grid-column: 1 / -1; }
 
 /* Panels */
-.panels { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+.panels { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
 @media (max-width: 940px) { .panels { grid-template-columns: minmax(0, 1fr); } }
 .panel { border: 1px solid var(--frame); background: var(--bg-deep); padding: 24px; min-width: 0; }
 .panel.lift { box-shadow: 6px 6px 0 0 var(--yellow); }
@@ -176,8 +194,19 @@ footer .mono { font-family: var(--mono); }
 <main class="wrap">
   <section>
     <div class="head">
+      <div><p class="eyebrow">Release by release</p><h2>Releases</h2></div>
+      <p class="note" id="size-note"></p>
+    </div>
+    <div class="rgrid" id="releases"></div>
+  </section>
+
+  <section>
+    <div class="head">
       <div><p class="eyebrow">Feature by feature</p><h2>Features</h2></div>
-      <div class="chips" id="chips" role="group" aria-label="Show features by status"></div>
+      <div class="filters">
+        <div class="chips" id="rchips" role="group" aria-label="Show features by release"></div>
+        <div class="chips" id="chips" role="group" aria-label="Show features by status"></div>
+      </div>
     </div>
     <div class="fgrid" id="features"></div>
   </section>
@@ -194,11 +223,6 @@ footer .mono { font-family: var(--mono); }
       <div class="rows" id="areas"></div>
       <div class="legend" id="areas-key"></div>
     </div>
-    <div class="panel lift-b">
-      <h3>Releases</h3>
-      <p class="sub">Open tasks planned for each release</p>
-      <div id="releases"></div>
-    </div>
   </section>
 
   <section class="panel">
@@ -209,7 +233,7 @@ footer .mono { font-family: var(--mono); }
 </main>
 
 <footer class="wrap">
-  <span>Generated from the GOAT team's planning board. Counts only; individual tasks stay on the board.</span>
+  <span>Generated from the GOAT team's planning board. Counts only; task titles stay on the board.</span>
   <span class="mono">Refreshed every 30 minutes</span>
 </footer>
 
@@ -267,35 +291,91 @@ el("stats").innerHTML = STATES.map(([k, l, c, d]) =>
   `<div class="stat" style="--c:var(${c})"><div class="n">${t[k]}</div><div class="l">${l}</div><div class="d">${d}</div></div>`
 ).join("");
 
-el("features").innerHTML = S.features.map((f, i) => {
-  const [name, color, solid] = FEATURE_STATUS[f.status];
-  const open = f.total - f.counts.done;
-  const under = f.counts.progress + f.counts.review;
-  const areas = f.openByArea.map((a) => `<b>${a.open}</b> ${esc(a.name)}`).join(" · ");
-  return `<article class="fcard" data-status="${f.status}">
+// Releases: where each open task is planned, and how big the work in it is.
+const RELEASE_NOTE = {
+  "Beta": "Work for the beta release",
+  "General Availability": "Needed before the first install outside the team",
+  "Marketplace": "The Marketplace listing and the checks for it",
+  "Later": "After that, or on hold",
+  "Not set": "No release chosen yet",
+};
+const SIZES = [["S", "S"], ["M", "M"], ["L", "L"], ["none", "not sized"]];
+const PRIOS = [["P0", "P0"], ["P1", "P1"], ["P2", "P2"], ["none", "not set"]];
+const mix = (counts, names) => names.filter(([k]) => counts[k]).map(([k, l]) => `<b>${counts[k]}</b> ${l}`).join(" · ") || "none";
+const tally = (rows, i) => rows.reduce((m, r) => { const k = r[i] || "none"; m[k] = (m[k] || 0) + 1; return m; }, {});
+
+el("size-note").textContent = "Size is the expected work: S is a day or less, M a couple of days, L more than that.";
+el("releases").innerHTML = S.releases.map((r, i) => `<article class="rcard${i ? "" : " first"}">
+    <div class="rtop">
+      <div><h3 class="rname">${esc(r.name)}</h3><div class="rdesc">${RELEASE_NOTE[r.name] || ""}</div></div>
+      <div class="rnum"><b>${r.open}</b><span>to go</span></div>
+    </div>
+    <div class="bar mid" role="img" aria-label="${label(r.counts)}">${segments(r.counts, r.total)}</div>
+    <dl class="mix">
+      <dt>Status</dt><dd>${mix(r.counts, STATES.map(([k, l]) => [k, l.toLowerCase()]))}</dd>
+      <dt>Size</dt><dd>${r.open ? mix(r.sizes, SIZES) : "nothing open"}</dd>
+      <dt>Priority</dt><dd>${r.open ? mix(r.priorities, PRIOS) : "nothing open"}</dd>
+    </dl>
+  </article>`).join("");
+
+// Features. Each task row is [state, release, size, priority, area]; the release filter recounts them.
+function featureStatus(c, total) {
+  if (c.done === total) return "done";
+  if (c.progress || c.review) return "progress";
+  if (c.blocked && !c.ready && !c.done) return "blocked";
+  return c.done ? "started" : "todo";
+}
+const FILTERS = [["all", "All"], ["progress", "In progress"], ["blocked", "Blocked"], ["started", "Paused"], ["todo", "Not started"], ["done", "Finished"]];
+const view = { release: "all", status: "all" };
+
+function renderFeatures() {
+  const cards = S.features.map((f, i) => {
+    const rows = f.tasks.filter((r) => view.release === "all" || (r[1] || "Not set") === view.release);
+    if (!rows.length) return null;
+    const counts = Object.fromEntries(STATES.map(([k]) => [k, 0]));
+    rows.forEach((r) => counts[r[0]]++);
+    return { f, i, rows, counts, status: featureStatus(counts, rows.length) };
+  }).filter(Boolean);
+  const byStatus = tally(cards.map((c) => [c.status]), 0);
+  if (view.status !== "all" && !byStatus[view.status]) view.status = "all";
+
+  el("chips").innerHTML = FILTERS.filter(([k]) => k === "all" || byStatus[k]).map(([k, l]) =>
+    `<button class="chip" type="button" data-f="${k}" aria-pressed="${k === view.status}">${l}<b>${k === "all" ? cards.length : byStatus[k]}</b></button>`).join("");
+  el("rchips").innerHTML = [["all", "All releases"], ...S.releases.map((r) => [r.name, r.name])].map(([k, l]) =>
+    `<button class="chip" type="button" data-r="${esc(k)}" aria-pressed="${k === view.release}">${esc(l)}</button>`).join("");
+
+  el("features").innerHTML = cards.filter((c) => view.status === "all" || c.status === view.status).map(({ f, i, rows, counts, status }) => {
+    const [name, color, solid] = FEATURE_STATUS[status];
+    const openRows = rows.filter((r) => r[0] !== "done");
+    const under = counts.progress + counts.review;
+    const sub = openRows.length
+      ? `${plural(openRows.length, "task", "tasks")} to go${under ? `, ${under} under way` : ""}${counts.done ? `, ${counts.done} finished` : ""}`
+      : `All ${plural(rows.length, "task", "tasks")} finished`;
+    const releases = tally(openRows.map((r) => [r[1] || "Not set"]), 0);
+    return `<article class="fcard">
     <div class="ftop">
       <div class="num">${String(i + 1).padStart(2, "0")}</div>
-      <div><h3 class="fname">${esc(f.name)}</h3><div class="fsub">${open ? `${plural(open, "task", "tasks")} to go${under ? `, ${under} under way` : ""}` : `All ${plural(f.total, "task", "tasks")} finished`}${f.release ? ` · ${esc(f.release)}` : ""}</div></div>
+      <div><h3 class="fname">${esc(f.name)}</h3><div class="fsub">${sub}</div></div>
       <span class="pill${solid ? " solid" : ""}" style="--c:var(${color})">${name}</span>
     </div>
-    <div class="bar mid" role="img" aria-label="${label(f.counts)}">${segments(f.counts, f.total)}</div>
+    <div class="bar mid" role="img" aria-label="${label(counts)}">${segments(counts, rows.length)}</div>
     <div class="cells">${STATES.map(([k, l, c]) =>
-      `<div class="cell${f.counts[k] ? "" : " zero"}" style="--c:var(${c})"><b>${f.counts[k]}</b><span>${l}</span></div>`).join("")}</div>
-    <div class="ffoot"><span>${open ? `Open work: ${areas}` : "Nothing left open"}</span><span><b>${f.counts.done}</b> of ${f.total} finished</span></div>
+      `<div class="cell${counts[k] ? "" : " zero"}" style="--c:var(${c})"><b>${counts[k]}</b><span>${l}</span></div>`).join("")}</div>
+    ${openRows.length ? `<dl class="mix">
+      ${view.release === "all" ? `<dt>Release</dt><dd>${mix(releases, S.releases.map((r) => [r.name, r.name]))}</dd>` : ""}
+      <dt>Size</dt><dd>${mix(tally(openRows, 2), SIZES)}</dd>
+      <dt>Open in</dt><dd>${mix(tally(openRows, 4), [["Frontend", "Frontend"], ["Backend", "Backend"], ["DevOps", "DevOps"], ["Docs", "Docs"]])}</dd>
+    </dl>` : ""}
   </article>`;
-}).join("") + `<p class="none" id="none" hidden>No features in this state right now.</p>`;
-
-const FILTERS = [["all", "All"], ["progress", "In progress"], ["blocked", "Blocked"], ["started", "Paused"], ["todo", "Not started"], ["done", "Finished"]];
-function show(which) {
-  let shown = 0;
-  document.querySelectorAll(".fcard").forEach((c) => { c.hidden = which !== "all" && c.dataset.status !== which; shown += !c.hidden; });
-  el("none").hidden = shown > 0;
-  document.querySelectorAll(".chip").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.f === which)));
+  }).join("") || `<p class="none">No features match this filter.</p>`;
 }
-el("chips").innerHTML = FILTERS.filter(([k]) => k === "all" || S.featureStatus[k]).map(([k, l]) =>
-  `<button class="chip" type="button" data-f="${k}">${l}<b>${k === "all" ? S.features.length : S.featureStatus[k]}</b></button>`).join("");
-el("chips").addEventListener("click", (e) => { const b = e.target.closest(".chip"); if (b) show(b.dataset.f); });
-show("all");
+document.querySelector(".filters").addEventListener("click", (e) => {
+  const b = e.target.closest(".chip");
+  if (!b) return;
+  if (b.dataset.r) view.release = b.dataset.r; else view.status = b.dataset.f;
+  renderFeatures();
+});
+renderFeatures();
 
 if (S.week.planned) {
   el("week-sub").textContent = `${S.week.title}: ${S.week.done} of ${S.week.planned} planned tasks done`;
@@ -309,15 +389,6 @@ const maxArea = Math.max(1, ...S.areas.map((a) => a.open));
 el("areas").innerHTML = S.areas.map((a) =>
   `<div class="brow"><span>${esc(a.name)}</span><div class="bar thin" style="width:${(100 * a.open) / maxArea}%">${segments(a.counts, a.open)}</div><span class="v">${a.open}</span></div>`
 ).join("");
-
-if (S.releases.some((r) => r.name !== "Not set")) {
-  const maxRel = Math.max(1, ...S.releases.map((r) => r.open));
-  el("releases").innerHTML = `<div class="rows">${S.releases.map((r) =>
-    `<div class="brow"><span>${esc(r.name)}</span><div class="bar thin" style="width:${(100 * r.open) / maxRel}%"><div class="seg" style="width:100%;background:var(--purple)"></div></div><span class="v">${r.open}</span></div>`
-  ).join("")}</div>`;
-} else {
-  el("releases").innerHTML = `<p class="empty">Tasks are not assigned to a release yet. This fills in once the team plans its releases.</p>`;
-}
 
 el("areas-key").innerHTML = key();
 el("recent-sub").textContent = S.recent.total ? `${S.recent.total} tasks finished, by feature` : "Tasks closed in the last 14 days";

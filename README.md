@@ -2,7 +2,7 @@
 
 The public page at the address GitHub Pages shows for this repository. A workflow rebuilds it every 30 minutes from the GOAT-IQ Goat Tracker board.
 
-Only counts are published: for each feature, how many of its tasks are in each board Status (Done, In Review, In Progress, Blocked, Ready, Backlog), plus totals per area, per release and for the current iteration. Task titles, people and waiting reasons stay on the board.
+Only counts are published: for each feature and each release, how many tasks are in each board Status (Done, In Review, In Progress, Blocked, Ready, Backlog), with their Size and Priority, plus totals per area and for the current iteration. Task titles, people and waiting reasons stay on the board.
 
 | File | What it is |
 |---|---|

@@ -1,8 +1,8 @@
 """Builds site/index.html, GOAT's public status page, from the Goat Tracker board.
 
-The page is public, so only counts leave the board: for each feature, how many
-of its tasks sit in each board Status, plus totals per area, per release and
-for the current iteration. Task titles, people and
+The page is public, so only counts leave the board: for each feature and each
+release, how many tasks sit in each board Status, with their Size and Priority,
+plus totals per area and for the current iteration. Task titles, people and
 "Waiting on" reasons are read to compute the counts and never written out.
 Standard library only, so the workflow needs no install step.
 
@@ -35,6 +35,8 @@ query($org: String!, $num: Int!, $cursor: String) {
           status: fieldValueByName(name: "Status") { ... on ProjectV2ItemFieldSingleSelectValue { name } }
           area: fieldValueByName(name: "Area") { ... on ProjectV2ItemFieldSingleSelectValue { name } }
           release: fieldValueByName(name: "Release") { ... on ProjectV2ItemFieldSingleSelectValue { name } }
+          priority: fieldValueByName(name: "Priority") { ... on ProjectV2ItemFieldSingleSelectValue { name } }
+          size: fieldValueByName(name: "Size") { ... on ProjectV2ItemFieldSingleSelectValue { name } }
           iteration: fieldValueByName(name: "Iteration") { ... on ProjectV2ItemFieldIterationValue { title startDate duration } }
         }
       }
@@ -68,6 +70,8 @@ def fetch(token):
                 "status": (node["status"] or {}).get("name"),
                 "area": (node["area"] or {}).get("name"),
                 "release": (node["release"] or {}).get("name"),
+                "priority": (node["priority"] or {}).get("name"),
+                "size": (node["size"] or {}).get("name"),
                 "iteration": node["iteration"],
             })
         if not page["pageInfo"]["hasNextPage"]:
@@ -106,9 +110,18 @@ def feature_row(feature, tasks):
     open_tasks = [t for t in tasks if state(t) != "done"]
     return {
         "name": feature["title"], "total": len(tasks), "counts": c, "status": feature_status(c, len(tasks)),
-        "release": feature["release"],
+        # One row per task, with no title: the page filters and recounts these by release.
+        "tasks": [[state(t), t["release"] or "", t["size"] or "", t["priority"] or "", t["area"] or ""] for t in tasks],
         "openByArea": [{"name": a, "open": n} for a in AREAS if (n := sum(1 for t in open_tasks if t["area"] == a))],
     }
+
+
+def release_row(name, tasks):
+    """A release's tasks by state, and the size and priority mix of the ones still open."""
+    open_tasks = [t for t in tasks if state(t) != "done"]
+    mix = lambda key: dict(Counter(t[key] or "none" for t in open_tasks))
+    return {"name": name, "total": len(tasks), "open": len(open_tasks), "counts": counts(tasks),
+            "sizes": mix("size"), "priorities": mix("priority")}
 
 
 def summarize(cards, now):
@@ -151,8 +164,8 @@ def summarize(cards, now):
         "areas": [{"name": a, "open": sum(1 for c in open_work if c["area"] == a),
                    "counts": counts([c for c in open_work if c["area"] == a])}
                   for a in AREAS if any(c["area"] == a for c in open_work)],
-        "releases": [{"name": r, "open": n} for r in RELEASES + ["Not set"]
-                     if (n := sum(1 for c in open_work if (c["release"] or "Not set") == r))],
+        "releases": [release_row(r, [c for c in work if (c["release"] or "Not set") == r]) for r in RELEASES + ["Not set"]
+                     if any((c["release"] or "Not set") == r for c in work)],
         "recent": {"total": len(recent), "byFeature": [{"name": k, "count": v} for k, v in recent_by.most_common()]},
     }
 

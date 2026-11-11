@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-11T20:16:02.951526+00:00",
+ "updated": "2026-11-11T20:22:31.176675+00:00",
  "since": "2026-11-09",
  "totals": {
   "done": 4,
@@ -28,7 +28,78 @@
     "backlog": 0
    },
    "status": "progress",
-   "release": null,
+   "tasks": [
+    [
+     "review",
+     "Beta",
+     "S",
+     "P0",
+     "Frontend"
+    ],
+    [
+     "review",
+     "Beta",
+     "M",
+     "P0",
+     "Frontend"
+    ],
+    [
+     "review",
+     "Beta",
+     "S",
+     "P0",
+     "Frontend"
+    ],
+    [
+     "review",
+     "Beta",
+     "S",
+     "P0",
+     "Frontend"
+    ],
+    [
+     "review",
+     "Beta",
+     "S",
+     "P0",
+     "Frontend"
+    ],
+    [
+     "blocked",
+     "Beta",
+     "S",
+     "P0",
+     "Backend"
+    ],
+    [
+     "done",
+     "",
+     "",
+     "",
+     "Backend"
+    ],
+    [
+     "done",
+     "",
+     "",
+     "",
+     "Backend"
+    ],
+    [
+     "review",
+     "Beta",
+     "S",
+     "P0",
+     "Frontend"
+    ],
+    [
+     "progress",
+     "Beta",
+     "S",
+     "P0",
+     "Backend"
+    ]
+   ],
    "openByArea": [
     {
      "name": "Frontend",
@@ -52,7 +123,43 @@
     "backlog": 0
    },
    "status": "progress",
-   "release": null,
+   "tasks": [
+    [
+     "review",
+     "Beta",
+     "S",
+     "P1",
+     "Frontend"
+    ],
+    [
+     "progress",
+     "Beta",
+     "M",
+     "P1",
+     "Backend"
+    ],
+    [
+     "done",
+     "",
+     "",
+     "",
+     "Backend"
+    ],
+    [
+     "blocked",
+     "Beta",
+     "M",
+     "P1",
+     "Frontend"
+    ],
+    [
+     "blocked",
+     "Beta",
+     "S",
+     "P1",
+     "DevOps"
+    ]
+   ],
    "openByArea": [
     {
      "name": "Frontend",
@@ -80,7 +187,64 @@
     "backlog": 2
    },
    "status": "progress",
-   "release": null,
+   "tasks": [
+    [
+     "progress",
+     "General Availability",
+     "S",
+     "P1",
+     "Backend"
+    ],
+    [
+     "blocked",
+     "General Availability",
+     "L",
+     "P1",
+     "Backend"
+    ],
+    [
+     "blocked",
+     "General Availability",
+     "L",
+     "P1",
+     "Frontend"
+    ],
+    [
+     "blocked",
+     "General Availability",
+     "M",
+     "P1",
+     "Backend"
+    ],
+    [
+     "blocked",
+     "General Availability",
+     "S",
+     "P1",
+     "Backend"
+    ],
+    [
+     "blocked",
+     "General Availability",
+     "M",
+     "P1",
+     "Backend"
+    ],
+    [
+     "backlog",
+     "Later",
+     "M",
+     "P2",
+     "Backend"
+    ],
+    [
+     "backlog",
+     "Later",
+     "",
+     "P2",
+     "Backend"
+    ]
+   ],
    "openByArea": [
     {
      "name": "Frontend",
@@ -104,7 +268,50 @@
     "backlog": 2
    },
    "status": "progress",
-   "release": null,
+   "tasks": [
+    [
+     "progress",
+     "General Availability",
+     "L",
+     "P1",
+     "Backend"
+    ],
+    [
+     "progress",
+     "General Availability",
+     "",
+     "P1",
+     "Backend"
+    ],
+    [
+     "progress",
+     "General Availability",
+     "",
+     "P1",
+     "Backend"
+    ],
+    [
+     "backlog",
+     "Later",
+     "",
+     "P2",
+     "Frontend"
+    ],
+    [
+     "progress",
+     "General Availability",
+     "S",
+     "P1",
+     "Backend"
+    ],
+    [
+     "backlog",
+     "General Availability",
+     "M",
+     "P1",
+     "Frontend"
+    ]
+   ],
    "openByArea": [
     {
      "name": "Frontend",
@@ -128,7 +335,36 @@
     "backlog": 1
    },
    "status": "todo",
-   "release": null,
+   "tasks": [
+    [
+     "blocked",
+     "General Availability",
+     "S",
+     "P1",
+     "Frontend"
+    ],
+    [
+     "blocked",
+     "General Availability",
+     "",
+     "P1",
+     "Backend"
+    ],
+    [
+     "backlog",
+     "Later",
+     "M",
+     "P2",
+     "Backend"
+    ],
+    [
+     "ready",
+     "Beta",
+     "S",
+     "P0",
+     "Frontend"
+    ]
+   ],
    "openByArea": [
     {
      "name": "Frontend",
@@ -152,7 +388,71 @@
     "backlog": 2
    },
    "status": "progress",
-   "release": null,
+   "tasks": [
+    [
+     "ready",
+     "Beta",
+     "M",
+     "P0",
+     "Frontend"
+    ],
+    [
+     "backlog",
+     "Later",
+     "M",
+     "P2",
+     "Frontend"
+    ],
+    [
+     "ready",
+     "Beta",
+     "M",
+     "P0",
+     "Frontend"
+    ],
+    [
+     "ready",
+     "Beta",
+     "M",
+     "P0",
+     "Frontend"
+    ],
+    [
+     "blocked",
+     "Beta",
+     "",
+     "P0",
+     "Frontend"
+    ],
+    [
+     "backlog",
+     "General Availability",
+     "M",
+     "P1",
+     "Backend"
+    ],
+    [
+     "done",
+     "",
+     "",
+     "",
+     "Frontend"
+    ],
+    [
+     "ready",
+     "Beta",
+     "S",
+     "P0",
+     "Frontend"
+    ],
+    [
+     "progress",
+     "Beta",
+     "M",
+     "P0",
+     "Frontend"
+    ]
+   ],
    "openByArea": [
     {
      "name": "Frontend",
@@ -176,7 +476,99 @@
     "backlog": 2
    },
    "status": "progress",
-   "release": null,
+   "tasks": [
+    [
+     "review",
+     "General Availability",
+     "S",
+     "P0",
+     "Frontend"
+    ],
+    [
+     "backlog",
+     "General Availability",
+     "M",
+     "P1",
+     "Backend"
+    ],
+    [
+     "blocked",
+     "General Availability",
+     "M",
+     "P1",
+     "Frontend"
+    ],
+    [
+     "review",
+     "Beta",
+     "M",
+     "P0",
+     "Frontend"
+    ],
+    [
+     "backlog",
+     "Later",
+     "",
+     "P2",
+     "Backend"
+    ],
+    [
+     "blocked",
+     "General Availability",
+     "S",
+     "P2",
+     "Frontend"
+    ],
+    [
+     "blocked",
+     "General Availability",
+     "S",
+     "P2",
+     "Frontend"
+    ],
+    [
+     "review",
+     "General Availability",
+     "S",
+     "P0",
+     "Frontend"
+    ],
+    [
+     "review",
+     "General Availability",
+     "S",
+     "P1",
+     "Frontend"
+    ],
+    [
+     "progress",
+     "General Availability",
+     "S",
+     "P1",
+     "Backend"
+    ],
+    [
+     "progress",
+     "General Availability",
+     "S",
+     "P0",
+     "Backend"
+    ],
+    [
+     "review",
+     "Beta",
+     "S",
+     "P0",
+     "Frontend"
+    ],
+    [
+     "progress",
+     "General Availability",
+     "S",
+     "P0",
+     "DevOps"
+    ]
+   ],
    "openByArea": [
     {
      "name": "Frontend",
@@ -204,7 +596,43 @@
     "backlog": 0
    },
    "status": "progress",
-   "release": null,
+   "tasks": [
+    [
+     "progress",
+     "General Availability",
+     "S",
+     "P1",
+     "DevOps"
+    ],
+    [
+     "blocked",
+     "General Availability",
+     "L",
+     "P1",
+     "DevOps"
+    ],
+    [
+     "ready",
+     "General Availability",
+     "M",
+     "P1",
+     "Backend"
+    ],
+    [
+     "progress",
+     "General Availability",
+     "M",
+     "P1",
+     "Backend"
+    ],
+    [
+     "ready",
+     "General Availability",
+     "S",
+     "P1",
+     "DevOps"
+    ]
+   ],
    "openByArea": [
     {
      "name": "Backend",
@@ -228,7 +656,57 @@
     "backlog": 1
    },
    "status": "progress",
-   "release": null,
+   "tasks": [
+    [
+     "progress",
+     "Beta",
+     "M",
+     "P0",
+     "Frontend"
+    ],
+    [
+     "progress",
+     "General Availability",
+     "M",
+     "P1",
+     "Backend"
+    ],
+    [
+     "ready",
+     "General Availability",
+     "S",
+     "P1",
+     "Backend"
+    ],
+    [
+     "progress",
+     "General Availability",
+     "S",
+     "P1",
+     "Backend"
+    ],
+    [
+     "progress",
+     "General Availability",
+     "S",
+     "P1",
+     "Backend"
+    ],
+    [
+     "progress",
+     "General Availability",
+     "S",
+     "P1",
+     "Backend"
+    ],
+    [
+     "backlog",
+     "Later",
+     "",
+     "P2",
+     "Backend"
+    ]
+   ],
    "openByArea": [
     {
      "name": "Frontend",
@@ -252,7 +730,64 @@
     "backlog": 1
    },
    "status": "progress",
-   "release": null,
+   "tasks": [
+    [
+     "blocked",
+     "Beta",
+     "S",
+     "P0",
+     "DevOps"
+    ],
+    [
+     "ready",
+     "Marketplace",
+     "S",
+     "P1",
+     "DevOps"
+    ],
+    [
+     "backlog",
+     "General Availability",
+     "",
+     "P1",
+     "DevOps"
+    ],
+    [
+     "ready",
+     "General Availability",
+     "S",
+     "P1",
+     "DevOps"
+    ],
+    [
+     "ready",
+     "General Availability",
+     "M",
+     "P1",
+     "DevOps"
+    ],
+    [
+     "ready",
+     "",
+     "S",
+     "P2",
+     "DevOps"
+    ],
+    [
+     "ready",
+     "Marketplace",
+     "",
+     "P1",
+     "DevOps"
+    ],
+    [
+     "progress",
+     "",
+     "S",
+     "",
+     "Backend"
+    ]
+   ],
    "openByArea": [
     {
      "name": "Backend",
@@ -276,7 +811,43 @@
     "backlog": 3
    },
    "status": "progress",
-   "release": null,
+   "tasks": [
+    [
+     "backlog",
+     "General Availability",
+     "",
+     "P1",
+     "Frontend"
+    ],
+    [
+     "blocked",
+     "General Availability",
+     "",
+     "P1",
+     "Frontend"
+    ],
+    [
+     "backlog",
+     "General Availability",
+     "",
+     "P1",
+     "Docs"
+    ],
+    [
+     "backlog",
+     "General Availability",
+     "",
+     "P1",
+     "Backend"
+    ],
+    [
+     "review",
+     "Beta",
+     "M",
+     "P1",
+     "Docs"
+    ]
+   ],
    "openByArea": [
     {
      "name": "Frontend",
@@ -304,7 +875,29 @@
     "backlog": 0
    },
    "status": "todo",
-   "release": null,
+   "tasks": [
+    [
+     "ready",
+     "Beta",
+     "M",
+     "P2",
+     "Frontend"
+    ],
+    [
+     "ready",
+     "",
+     "S",
+     "P2",
+     "Frontend"
+    ],
+    [
+     "ready",
+     "",
+     "S",
+     "P2",
+     "Docs"
+    ]
+   ],
    "openByArea": [
     {
      "name": "Frontend",
@@ -373,23 +966,110 @@
  "releases": [
   {
    "name": "Beta",
-   "open": 25
+   "total": 25,
+   "open": 25,
+   "counts": {
+    "done": 0,
+    "review": 10,
+    "progress": 4,
+    "blocked": 5,
+    "ready": 6,
+    "backlog": 0
+   },
+   "sizes": {
+    "S": 13,
+    "M": 11,
+    "none": 1
+   },
+   "priorities": {
+    "P0": 19,
+    "P1": 5,
+    "P2": 1
+   }
   },
   {
    "name": "General Availability",
-   "open": 41
+   "total": 41,
+   "open": 41,
+   "counts": {
+    "done": 0,
+    "review": 3,
+    "progress": 14,
+    "blocked": 12,
+    "ready": 5,
+    "backlog": 7
+   },
+   "sizes": {
+    "S": 19,
+    "L": 4,
+    "M": 10,
+    "none": 8
+   },
+   "priorities": {
+    "P1": 35,
+    "P0": 4,
+    "P2": 2
+   }
   },
   {
    "name": "Marketplace",
-   "open": 2
+   "total": 2,
+   "open": 2,
+   "counts": {
+    "done": 0,
+    "review": 0,
+    "progress": 0,
+    "blocked": 0,
+    "ready": 2,
+    "backlog": 0
+   },
+   "sizes": {
+    "S": 1,
+    "none": 1
+   },
+   "priorities": {
+    "P1": 2
+   }
   },
   {
    "name": "Later",
-   "open": 7
+   "total": 7,
+   "open": 7,
+   "counts": {
+    "done": 0,
+    "review": 0,
+    "progress": 0,
+    "blocked": 0,
+    "ready": 0,
+    "backlog": 7
+   },
+   "sizes": {
+    "none": 4,
+    "M": 3
+   },
+   "priorities": {
+    "P2": 7
+   }
   },
   {
    "name": "Not set",
-   "open": 4
+   "total": 8,
+   "open": 4,
+   "counts": {
+    "done": 4,
+    "review": 0,
+    "progress": 1,
+    "blocked": 0,
+    "ready": 3,
+    "backlog": 0
+   },
+   "sizes": {
+    "S": 4
+   },
+   "priorities": {
+    "P2": 3,
+    "none": 1
+   }
   }
  ],
  "recent": {
