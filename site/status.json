@@ -1,31 +1,30 @@
 {
- "updated": "2026-11-11T16:26:05.877140+00:00",
+ "updated": "2026-11-11T20:16:02.951526+00:00",
  "since": "2026-11-09",
  "totals": {
-  "done": 0,
-  "review": 2,
-  "progress": 7,
-  "blocked": 21,
-  "ready": 34,
-  "backlog": 10,
-  "tasks": 74,
+  "done": 4,
+  "review": 13,
+  "progress": 19,
+  "blocked": 17,
+  "ready": 16,
+  "backlog": 14,
+  "tasks": 83,
   "bugs": 3
  },
  "featureStatus": {
-  "progress": 4,
-  "todo": 7,
-  "blocked": 1
+  "progress": 10,
+  "todo": 2
  },
  "features": [
   {
    "name": "Deleting with a preview",
    "total": 10,
    "counts": {
-    "done": 0,
-    "review": 1,
-    "progress": 2,
-    "blocked": 2,
-    "ready": 5,
+    "done": 2,
+    "review": 6,
+    "progress": 1,
+    "blocked": 1,
+    "ready": 0,
     "backlog": 0
    },
    "status": "progress",
@@ -37,7 +36,7 @@
     },
     {
      "name": "Backend",
-     "open": 4
+     "open": 2
     }
    ]
   },
@@ -45,9 +44,9 @@
    "name": "Drafts and version history",
    "total": 5,
    "counts": {
-    "done": 0,
+    "done": 1,
     "review": 1,
-    "progress": 2,
+    "progress": 1,
     "blocked": 2,
     "ready": 0,
     "backlog": 0
@@ -61,7 +60,7 @@
     },
     {
      "name": "Backend",
-     "open": 2
+     "open": 1
     },
     {
      "name": "DevOps",
@@ -71,16 +70,16 @@
   },
   {
    "name": "AI",
-   "total": 6,
+   "total": 8,
    "counts": {
     "done": 0,
     "review": 0,
-    "progress": 0,
+    "progress": 1,
     "blocked": 5,
-    "ready": 1,
-    "backlog": 0
+    "ready": 0,
+    "backlog": 2
    },
-   "status": "todo",
+   "status": "progress",
    "release": null,
    "openByArea": [
     {
@@ -89,31 +88,31 @@
     },
     {
      "name": "Backend",
-     "open": 5
+     "open": 7
     }
    ]
   },
   {
    "name": "Formulas",
-   "total": 4,
+   "total": 6,
    "counts": {
     "done": 0,
     "review": 0,
-    "progress": 0,
-    "blocked": 3,
-    "ready": 1,
-    "backlog": 0
+    "progress": 4,
+    "blocked": 0,
+    "ready": 0,
+    "backlog": 2
    },
-   "status": "todo",
+   "status": "progress",
    "release": null,
    "openByArea": [
     {
      "name": "Frontend",
-     "open": 1
+     "open": 2
     },
     {
      "name": "Backend",
-     "open": 3
+     "open": 4
     }
    ]
   },
@@ -143,16 +142,16 @@
   },
   {
    "name": "Dashboards and charts",
-   "total": 8,
+   "total": 9,
    "counts": {
-    "done": 0,
+    "done": 1,
     "review": 0,
-    "progress": 0,
+    "progress": 1,
     "blocked": 1,
-    "ready": 5,
+    "ready": 4,
     "backlog": 2
    },
-   "status": "todo",
+   "status": "progress",
    "release": null,
    "openByArea": [
     {
@@ -167,16 +166,16 @@
   },
   {
    "name": "Tenants and row-level data",
-   "total": 12,
+   "total": 13,
    "counts": {
     "done": 0,
-    "review": 0,
-    "progress": 0,
+    "review": 5,
+    "progress": 3,
     "blocked": 3,
-    "ready": 6,
-    "backlog": 3
+    "ready": 0,
+    "backlog": 2
    },
-   "status": "todo",
+   "status": "progress",
    "release": null,
    "openByArea": [
     {
@@ -186,6 +185,10 @@
     {
      "name": "Backend",
      "open": 4
+    },
+    {
+     "name": "DevOps",
+     "open": 1
     }
    ]
   },
@@ -215,14 +218,14 @@
   },
   {
    "name": "Lists, data loading, and performance",
-   "total": 6,
+   "total": 7,
    "counts": {
     "done": 0,
     "review": 0,
-    "progress": 1,
+    "progress": 5,
     "blocked": 0,
-    "ready": 5,
-    "backlog": 0
+    "ready": 1,
+    "backlog": 1
    },
    "status": "progress",
    "release": null,
@@ -233,24 +236,28 @@
     },
     {
      "name": "Backend",
-     "open": 5
+     "open": 6
     }
    ]
   },
   {
    "name": "Install, release, and operations",
-   "total": 7,
+   "total": 8,
    "counts": {
     "done": 0,
     "review": 0,
-    "progress": 0,
+    "progress": 1,
     "blocked": 1,
     "ready": 5,
     "backlog": 1
    },
-   "status": "todo",
+   "status": "progress",
    "release": null,
    "openByArea": [
+    {
+     "name": "Backend",
+     "open": 1
+    },
     {
      "name": "DevOps",
      "open": 7
@@ -259,16 +266,16 @@
   },
   {
    "name": "Onboarding and marketing",
-   "total": 4,
+   "total": 5,
    "counts": {
     "done": 0,
-    "review": 0,
+    "review": 1,
     "progress": 0,
     "blocked": 1,
     "ready": 0,
     "backlog": 3
    },
-   "status": "blocked",
+   "status": "progress",
    "release": null,
    "openByArea": [
     {
@@ -281,7 +288,7 @@
     },
     {
      "name": "Docs",
-     "open": 1
+     "open": 2
     }
    ]
   },
@@ -316,35 +323,35 @@
  "areas": [
   {
    "name": "Frontend",
-   "open": 32,
+   "open": 33,
    "counts": {
     "done": 0,
-    "review": 2,
-    "progress": 1,
-    "blocked": 10,
-    "ready": 16,
-    "backlog": 3
+    "review": 12,
+    "progress": 2,
+    "blocked": 8,
+    "ready": 7,
+    "backlog": 4
    }
   },
   {
    "name": "Backend",
-   "open": 29,
+   "open": 31,
    "counts": {
     "done": 0,
     "review": 0,
-    "progress": 5,
-    "blocked": 8,
-    "ready": 11,
-    "backlog": 5
+    "progress": 15,
+    "blocked": 6,
+    "ready": 2,
+    "backlog": 8
    }
   },
   {
    "name": "DevOps",
-   "open": 11,
+   "open": 12,
    "counts": {
     "done": 0,
     "review": 0,
-    "progress": 1,
+    "progress": 2,
     "blocked": 3,
     "ready": 6,
     "backlog": 1
@@ -352,10 +359,10 @@
   },
   {
    "name": "Docs",
-   "open": 2,
+   "open": 3,
    "counts": {
     "done": 0,
-    "review": 0,
+    "review": 1,
     "progress": 0,
     "blocked": 0,
     "ready": 1,
@@ -365,12 +372,41 @@
  ],
  "releases": [
   {
+   "name": "Beta",
+   "open": 25
+  },
+  {
+   "name": "General Availability",
+   "open": 41
+  },
+  {
+   "name": "Marketplace",
+   "open": 2
+  },
+  {
+   "name": "Later",
+   "open": 7
+  },
+  {
    "name": "Not set",
-   "open": 74
+   "open": 4
   }
  ],
  "recent": {
-  "total": 0,
-  "byFeature": []
+  "total": 4,
+  "byFeature": [
+   {
+    "name": "Deleting with a preview",
+    "count": 2
+   },
+   {
+    "name": "Drafts and version history",
+    "count": 1
+   },
+   {
+    "name": "Dashboards and charts",
+    "count": 1
+   }
+  ]
  }
 }
