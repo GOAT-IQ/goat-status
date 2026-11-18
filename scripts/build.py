@@ -3,6 +3,8 @@
 The page is public. It shows each feature's tasks by title, with their board
 Status, Size, Priority, Release and Area, and the totals built from them.
 Descriptions, people and "Waiting on" reasons never leave the board.
+Once a week it also saves site/weeks/<Friday>.json, a frozen copy of that data, so the
+page can show past weeks and what changed between them.
 Standard library only, so the workflow needs no install step.
 
 Environment:
@@ -14,6 +16,7 @@ import json
 import os
 import pathlib
 import urllib.request
+import zoneinfo
 from collections import Counter, defaultdict
 
 ORG = "GOAT-IQ"
@@ -22,6 +25,9 @@ RECENT_DAYS = 14
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 AREAS = ["Frontend", "Backend", "DevOps", "Docs"]
 RELEASES = ["Beta", "General Availability", "Marketplace", "Later"]
+# A week closes at the end of Friday in this time zone.
+WEEK_ZONE = zoneinfo.ZoneInfo("America/New_York")
+WEEKS = ROOT / "site" / "weeks"
 
 QUERY = """
 query($org: String!, $num: Int!, $cursor: String) {
@@ -170,11 +176,31 @@ def summarize(cards, now):
     }
 
 
+def last_closed_friday(now):
+    """The most recent Friday that has already ended. On a Friday that is the one before."""
+    today = now.astimezone(WEEK_ZONE).date()
+    return today - dt.timedelta(days=(today.weekday() - 4) % 7 or 7)
+
+
+def save_week(status, now):
+    """Saves the week's snapshot on the first build after its Friday ends. A saved week is never rewritten."""
+    friday = last_closed_friday(now)
+    path = WEEKS / f"{friday}.json"
+    if path.exists() or friday.isoformat() < status["since"]:
+        return
+    WEEKS.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps({**status, "closed": friday.isoformat()}, indent=1, ensure_ascii=False))
+
+
 def main():
     token = os.environ.get("GOAT_BOARD_TOKEN")
     if not token:
         raise SystemExit("GOAT_BOARD_TOKEN is not set")
-    status = summarize(fetch(token), dt.datetime.now(dt.timezone.utc))
+    now = dt.datetime.now(dt.timezone.utc)
+    status = summarize(fetch(token), now)
+    save_week(status, now)
+    # Newest first. The page lists these in its week menu and loads one when it is picked.
+    status["weeks"] = sorted((f.stem for f in WEEKS.glob("*.json")), reverse=True)
     template = (ROOT / "scripts" / "template.html").read_text()
     out = ROOT / "site" / "index.html"
     out.parent.mkdir(exist_ok=True)
