@@ -1,19 +1,20 @@
 {
- "updated": "2026-11-18T12:53:07.925190+00:00",
+ "updated": "2026-11-20T01:14:21.834335+00:00",
  "since": "2026-11-09",
  "totals": {
-  "done": 4,
-  "review": 13,
-  "progress": 19,
-  "blocked": 17,
+  "done": 7,
+  "review": 12,
+  "progress": 18,
+  "blocked": 16,
   "ready": 16,
-  "backlog": 14,
-  "tasks": 83,
+  "backlog": 17,
+  "tasks": 86,
   "bugs": 3
  },
  "featureStatus": {
-  "progress": 10,
-  "todo": 2
+  "progress": 9,
+  "todo": 2,
+  "started": 1
  },
  "features": [
   {
@@ -135,17 +136,17 @@
    "name": "Drafts and version history",
    "total": 5,
    "counts": {
-    "done": 1,
-    "review": 1,
+    "done": 3,
+    "review": 0,
     "progress": 1,
-    "blocked": 2,
+    "blocked": 1,
     "ready": 0,
     "backlog": 0
    },
    "status": "progress",
    "tasks": [
     [
-     "review",
+     "done",
      "Beta",
      "S",
      "P1",
@@ -172,7 +173,7 @@
      "Version history paging and \"who is editing\""
     ],
     [
-     "blocked",
+     "done",
      "Beta",
      "M",
      "P1",
@@ -191,10 +192,6 @@
     ]
    ],
    "openByArea": [
-    {
-     "name": "Frontend",
-     "open": 2
-    },
     {
      "name": "Backend",
      "open": 1
@@ -446,14 +443,14 @@
    "name": "Dashboards and charts",
    "total": 9,
    "counts": {
-    "done": 1,
+    "done": 2,
     "review": 0,
-    "progress": 1,
+    "progress": 0,
     "blocked": 1,
     "ready": 4,
     "backlog": 2
    },
-   "status": "progress",
+   "status": "started",
    "tasks": [
     [
      "ready",
@@ -528,7 +525,7 @@
      "Decide the remaining drill-down fixes"
     ],
     [
-     "progress",
+     "done",
      "Beta",
      "M",
      "P0",
@@ -540,7 +537,7 @@
    "openByArea": [
     {
      "name": "Frontend",
-     "open": 7
+     "open": 6
     },
     {
      "name": "Backend",
@@ -1082,12 +1079,12 @@
  "areas": [
   {
    "name": "Frontend",
-   "open": 33,
+   "open": 30,
    "counts": {
     "done": 0,
-    "review": 12,
-    "progress": 2,
-    "blocked": 8,
+    "review": 11,
+    "progress": 1,
+    "blocked": 7,
     "ready": 7,
     "backlog": 4
    }
@@ -1118,14 +1115,14 @@
   },
   {
    "name": "Docs",
-   "open": 3,
+   "open": 4,
    "counts": {
     "done": 0,
     "review": 1,
     "progress": 0,
     "blocked": 0,
     "ready": 1,
-    "backlog": 1
+    "backlog": 2
    }
   }
  ],
@@ -1133,23 +1130,23 @@
   {
    "name": "Beta",
    "total": 25,
-   "open": 25,
+   "open": 22,
    "counts": {
-    "done": 0,
-    "review": 10,
-    "progress": 4,
-    "blocked": 5,
+    "done": 3,
+    "review": 9,
+    "progress": 3,
+    "blocked": 4,
     "ready": 6,
     "backlog": 0
    },
    "sizes": {
-    "S": 13,
-    "M": 11,
+    "S": 12,
+    "M": 9,
     "none": 1
    },
    "priorities": {
-    "P0": 19,
-    "P1": 5,
+    "P0": 18,
+    "P1": 3,
     "P2": 1
    }
   },
@@ -1219,39 +1216,41 @@
   },
   {
    "name": "Not set",
-   "total": 8,
-   "open": 4,
+   "total": 11,
+   "open": 7,
    "counts": {
     "done": 4,
     "review": 0,
     "progress": 1,
     "blocked": 0,
     "ready": 3,
-    "backlog": 0
+    "backlog": 3
    },
    "sizes": {
-    "S": 4
+    "S": 4,
+    "M": 3
    },
    "priorities": {
     "P2": 3,
+    "P0": 3,
     "none": 1
    }
   }
  ],
  "recent": {
-  "total": 4,
+  "total": 7,
   "byFeature": [
+   {
+    "name": "Drafts and version history",
+    "count": 3
+   },
    {
     "name": "Deleting with a preview",
     "count": 2
    },
    {
-    "name": "Drafts and version history",
-    "count": 1
-   },
-   {
     "name": "Dashboards and charts",
-    "count": 1
+    "count": 2
    }
   ]
  },
