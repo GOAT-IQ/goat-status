@@ -1,13 +1,13 @@
 {
- "updated": "2026-11-21T06:58:00.575026+00:00",
+ "updated": "2026-11-24T00:20:48.727945+00:00",
  "since": "2026-11-09",
  "totals": {
-  "done": 7,
+  "done": 8,
   "review": 12,
   "progress": 18,
   "blocked": 16,
   "ready": 16,
-  "backlog": 17,
+  "backlog": 16,
   "tasks": 86,
   "bugs": 3
  },
@@ -1217,28 +1217,28 @@
   {
    "name": "Not set",
    "total": 11,
-   "open": 7,
+   "open": 6,
    "counts": {
-    "done": 4,
+    "done": 5,
     "review": 0,
     "progress": 1,
     "blocked": 0,
     "ready": 3,
-    "backlog": 3
+    "backlog": 2
    },
    "sizes": {
     "S": 4,
-    "M": 3
+    "M": 2
    },
    "priorities": {
     "P2": 3,
-    "P0": 3,
+    "P0": 2,
     "none": 1
    }
   }
  ],
  "recent": {
-  "total": 7,
+  "total": 8,
   "byFeature": [
    {
     "name": "Drafts and version history",
@@ -1251,6 +1251,10 @@
    {
     "name": "Dashboards and charts",
     "count": 2
+   },
+   {
+    "name": "Other work",
+    "count": 1
    }
   ]
  },
