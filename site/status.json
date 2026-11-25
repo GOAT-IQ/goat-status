@@ -1,13 +1,13 @@
 {
- "updated": "2026-11-24T00:20:48.727945+00:00",
+ "updated": "2026-11-25T23:35:45.992950+00:00",
  "since": "2026-11-09",
  "totals": {
-  "done": 8,
+  "done": 9,
   "review": 12,
-  "progress": 18,
+  "progress": 20,
   "blocked": 16,
   "ready": 16,
-  "backlog": 16,
+  "backlog": 13,
   "tasks": 86,
   "bugs": 3
  },
@@ -952,10 +952,10 @@
    "counts": {
     "done": 0,
     "review": 1,
-    "progress": 0,
+    "progress": 1,
     "blocked": 1,
     "ready": 0,
-    "backlog": 3
+    "backlog": 2
    },
    "status": "progress",
    "tasks": [
@@ -978,7 +978,7 @@
      "Build guided onboarding"
     ],
     [
-     "backlog",
+     "progress",
      "General Availability",
      "",
      "P1",
@@ -1119,10 +1119,10 @@
    "counts": {
     "done": 0,
     "review": 1,
-    "progress": 0,
+    "progress": 2,
     "blocked": 0,
     "ready": 1,
-    "backlog": 2
+    "backlog": 0
    }
   }
  ],
@@ -1157,10 +1157,10 @@
    "counts": {
     "done": 0,
     "review": 3,
-    "progress": 14,
+    "progress": 15,
     "blocked": 12,
     "ready": 5,
-    "backlog": 7
+    "backlog": 6
    },
    "sizes": {
     "S": 19,
@@ -1217,43 +1217,39 @@
   {
    "name": "Not set",
    "total": 11,
-   "open": 6,
+   "open": 5,
    "counts": {
-    "done": 5,
+    "done": 6,
     "review": 0,
-    "progress": 1,
+    "progress": 2,
     "blocked": 0,
     "ready": 3,
-    "backlog": 2
+    "backlog": 0
    },
    "sizes": {
     "S": 4,
-    "M": 2
+    "M": 1
    },
    "priorities": {
     "P2": 3,
-    "P0": 2,
-    "none": 1
+    "none": 1,
+    "P0": 1
    }
   }
  ],
  "recent": {
-  "total": 8,
+  "total": 5,
   "byFeature": [
    {
     "name": "Drafts and version history",
-    "count": 3
-   },
-   {
-    "name": "Deleting with a preview",
-    "count": 2
-   },
-   {
-    "name": "Dashboards and charts",
     "count": 2
    },
    {
     "name": "Other work",
+    "count": 2
+   },
+   {
+    "name": "Dashboards and charts",
     "count": 1
    }
   ]
