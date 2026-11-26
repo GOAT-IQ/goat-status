@@ -1,29 +1,30 @@
 {
- "updated": "2026-11-25T23:35:45.992950+00:00",
+ "updated": "2026-11-26T15:44:58.372562+00:00",
  "since": "2026-11-09",
  "totals": {
-  "done": 9,
-  "review": 12,
-  "progress": 20,
-  "blocked": 16,
+  "done": 27,
+  "review": 4,
+  "progress": 13,
+  "blocked": 13,
   "ready": 16,
   "backlog": 13,
   "tasks": 86,
-  "bugs": 3
+  "bugs": 1
  },
  "featureStatus": {
-  "progress": 9,
-  "todo": 2,
-  "started": 1
+  "progress": 7,
+  "done": 1,
+  "started": 2,
+  "todo": 2
  },
  "features": [
   {
    "name": "Deleting with a preview",
    "total": 10,
    "counts": {
-    "done": 2,
-    "review": 6,
-    "progress": 1,
+    "done": 3,
+    "review": 4,
+    "progress": 2,
     "blocked": 1,
     "ready": 0,
     "backlog": 0
@@ -31,7 +32,7 @@
    "status": "progress",
    "tasks": [
     [
-     "review",
+     "progress",
      "Beta",
      "S",
      "P0",
@@ -40,7 +41,7 @@
      "Delete a collection and its dashboards"
     ],
     [
-     "review",
+     "progress",
      "Beta",
      "M",
      "P0",
@@ -112,7 +113,7 @@
      "Move dashboard dialog"
     ],
     [
-     "progress",
+     "done",
      "Beta",
      "S",
      "P0",
@@ -128,7 +129,7 @@
     },
     {
      "name": "Backend",
-     "open": 2
+     "open": 1
     }
    ]
   },
@@ -136,14 +137,14 @@
    "name": "Drafts and version history",
    "total": 5,
    "counts": {
-    "done": 3,
+    "done": 5,
     "review": 0,
-    "progress": 1,
-    "blocked": 1,
+    "progress": 0,
+    "blocked": 0,
     "ready": 0,
     "backlog": 0
    },
-   "status": "progress",
+   "status": "done",
    "tasks": [
     [
      "done",
@@ -155,7 +156,7 @@
      "Code cleanup before the drafts screens"
     ],
     [
-     "progress",
+     "done",
      "Beta",
      "M",
      "P1",
@@ -182,7 +183,7 @@
      "Review the drafts screens"
     ],
     [
-     "blocked",
+     "done",
      "Beta",
      "S",
      "P1",
@@ -191,32 +192,23 @@
      "Turn drafts on in dev, then QA"
     ]
    ],
-   "openByArea": [
-    {
-     "name": "Backend",
-     "open": 1
-    },
-    {
-     "name": "DevOps",
-     "open": 1
-    }
-   ]
+   "openByArea": []
   },
   {
    "name": "AI",
    "total": 8,
    "counts": {
-    "done": 0,
+    "done": 1,
     "review": 0,
-    "progress": 1,
+    "progress": 0,
     "blocked": 5,
     "ready": 0,
     "backlog": 2
    },
-   "status": "progress",
+   "status": "started",
    "tasks": [
     [
-     "progress",
+     "done",
      "General Availability",
      "S",
      "P1",
@@ -295,7 +287,7 @@
     },
     {
      "name": "Backend",
-     "open": 7
+     "open": 6
     }
    ]
   },
@@ -303,9 +295,9 @@
    "name": "Formulas",
    "total": 6,
    "counts": {
-    "done": 0,
+    "done": 1,
     "review": 0,
-    "progress": 4,
+    "progress": 3,
     "blocked": 0,
     "ready": 0,
     "backlog": 2
@@ -349,7 +341,7 @@
      "Formulas tab"
     ],
     [
-     "progress",
+     "done",
      "General Availability",
      "S",
      "P1",
@@ -374,7 +366,7 @@
     },
     {
      "name": "Backend",
-     "open": 4
+     "open": 3
     }
    ]
   },
@@ -549,17 +541,17 @@
    "name": "Tenants and row-level data",
    "total": 13,
    "counts": {
-    "done": 0,
-    "review": 5,
-    "progress": 3,
-    "blocked": 3,
+    "done": 8,
+    "review": 0,
+    "progress": 1,
+    "blocked": 2,
     "ready": 0,
     "backlog": 2
    },
    "status": "progress",
    "tasks": [
     [
-     "review",
+     "done",
      "General Availability",
      "S",
      "P0",
@@ -577,7 +569,7 @@
      "Row access per collection and a rule for tenant authors (backend)"
     ],
     [
-     "blocked",
+     "progress",
      "General Availability",
      "M",
      "P1",
@@ -586,7 +578,7 @@
      "Screens for the row access settings"
     ],
     [
-     "review",
+     "done",
      "Beta",
      "M",
      "P0",
@@ -622,7 +614,7 @@
      "Share confirmation in the chart editor"
     ],
     [
-     "review",
+     "done",
      "General Availability",
      "S",
      "P0",
@@ -631,7 +623,7 @@
      "Row access in the single-tenant edition"
     ],
     [
-     "review",
+     "done",
      "General Availability",
      "S",
      "P1",
@@ -640,7 +632,7 @@
      "Show composite tenant keys in the Shape step"
     ],
     [
-     "progress",
+     "done",
      "General Availability",
      "S",
      "P1",
@@ -649,7 +641,7 @@
      "Check the tenant author rule in the backend"
     ],
     [
-     "progress",
+     "done",
      "General Availability",
      "S",
      "P0",
@@ -658,7 +650,7 @@
      "Stop two apps from sharing a warehouse table"
     ],
     [
-     "review",
+     "done",
      "Beta",
      "S",
      "P0",
@@ -667,7 +659,7 @@
      "Switch for automatic tenant registration"
     ],
     [
-     "progress",
+     "done",
      "General Availability",
      "S",
      "P0",
@@ -679,15 +671,11 @@
    "openByArea": [
     {
      "name": "Frontend",
-     "open": 8
+     "open": 3
     },
     {
      "name": "Backend",
-     "open": 4
-    },
-    {
-     "name": "DevOps",
-     "open": 1
+     "open": 2
     }
    ]
   },
@@ -765,9 +753,9 @@
    "name": "Lists, data loading, and performance",
    "total": 7,
    "counts": {
-    "done": 0,
+    "done": 4,
     "review": 0,
-    "progress": 5,
+    "progress": 1,
     "blocked": 0,
     "ready": 1,
     "backlog": 1
@@ -784,7 +772,7 @@
      "Move remaining lists to the paged API"
     ],
     [
-     "progress",
+     "done",
      "General Availability",
      "M",
      "P1",
@@ -802,7 +790,7 @@
      "Measure the cost of viewer loads"
     ],
     [
-     "progress",
+     "done",
      "General Availability",
      "S",
      "P1",
@@ -811,7 +799,7 @@
      "Dataset name checks on large installs"
     ],
     [
-     "progress",
+     "done",
      "General Availability",
      "S",
      "P1",
@@ -820,7 +808,7 @@
      "Fix reloading a file dataset with a composite tenant key"
     ],
     [
-     "progress",
+     "done",
      "General Availability",
      "S",
      "P1",
@@ -845,7 +833,7 @@
     },
     {
      "name": "Backend",
-     "open": 6
+     "open": 2
     }
    ]
   },
@@ -853,17 +841,17 @@
    "name": "Install, release, and operations",
    "total": 8,
    "counts": {
-    "done": 0,
+    "done": 1,
     "review": 0,
     "progress": 1,
-    "blocked": 1,
+    "blocked": 0,
     "ready": 5,
     "backlog": 1
    },
    "status": "progress",
    "tasks": [
     [
-     "blocked",
+     "done",
      "Beta",
      "S",
      "P0",
@@ -942,7 +930,7 @@
     },
     {
      "name": "DevOps",
-     "open": 7
+     "open": 6
     }
    ]
   },
@@ -951,8 +939,8 @@
    "total": 5,
    "counts": {
     "done": 0,
-    "review": 1,
-    "progress": 1,
+    "review": 0,
+    "progress": 2,
     "blocked": 1,
     "ready": 0,
     "backlog": 2
@@ -996,7 +984,7 @@
      "Usage data for the CRM and analytics"
     ],
     [
-     "review",
+     "progress",
      "Beta",
      "M",
      "P1",
@@ -1079,23 +1067,23 @@
  "areas": [
   {
    "name": "Frontend",
-   "open": 30,
+   "open": 25,
    "counts": {
     "done": 0,
-    "review": 11,
-    "progress": 1,
-    "blocked": 7,
+    "review": 4,
+    "progress": 4,
+    "blocked": 6,
     "ready": 7,
     "backlog": 4
    }
   },
   {
    "name": "Backend",
-   "open": 31,
+   "open": 21,
    "counts": {
     "done": 0,
     "review": 0,
-    "progress": 15,
+    "progress": 5,
     "blocked": 6,
     "ready": 2,
     "backlog": 8
@@ -1103,12 +1091,12 @@
   },
   {
    "name": "DevOps",
-   "open": 12,
+   "open": 9,
    "counts": {
     "done": 0,
     "review": 0,
-    "progress": 2,
-    "blocked": 3,
+    "progress": 1,
+    "blocked": 1,
     "ready": 6,
     "backlog": 1
    }
@@ -1118,8 +1106,8 @@
    "open": 4,
    "counts": {
     "done": 0,
-    "review": 1,
-    "progress": 2,
+    "review": 0,
+    "progress": 3,
     "blocked": 0,
     "ready": 1,
     "backlog": 0
@@ -1130,47 +1118,46 @@
   {
    "name": "Beta",
    "total": 25,
-   "open": 22,
+   "open": 16,
    "counts": {
-    "done": 3,
-    "review": 9,
-    "progress": 3,
-    "blocked": 4,
+    "done": 9,
+    "review": 4,
+    "progress": 4,
+    "blocked": 2,
     "ready": 6,
     "backlog": 0
    },
    "sizes": {
-    "S": 12,
-    "M": 9,
+    "S": 8,
+    "M": 7,
     "none": 1
    },
    "priorities": {
-    "P0": 18,
-    "P1": 3,
-    "P2": 1
+    "P0": 14,
+    "P2": 1,
+    "P1": 1
    }
   },
   {
    "name": "General Availability",
    "total": 41,
-   "open": 41,
+   "open": 29,
    "counts": {
-    "done": 0,
-    "review": 3,
-    "progress": 15,
-    "blocked": 12,
+    "done": 12,
+    "review": 0,
+    "progress": 7,
+    "blocked": 11,
     "ready": 5,
     "backlog": 6
    },
    "sizes": {
-    "S": 19,
     "L": 4,
-    "M": 10,
+    "M": 9,
+    "S": 8,
     "none": 8
    },
    "priorities": {
-    "P1": 35,
-    "P0": 4,
+    "P1": 27,
     "P2": 2
    }
   },
@@ -1238,18 +1225,42 @@
   }
  ],
  "recent": {
-  "total": 5,
+  "total": 23,
   "byFeature": [
    {
+    "name": "Tenants and row-level data",
+    "count": 8
+   },
+   {
     "name": "Drafts and version history",
-    "count": 2
+    "count": 4
+   },
+   {
+    "name": "Lists, data loading, and performance",
+    "count": 4
    },
    {
     "name": "Other work",
     "count": 2
    },
    {
+    "name": "Deleting with a preview",
+    "count": 1
+   },
+   {
+    "name": "AI",
+    "count": 1
+   },
+   {
+    "name": "Install, release, and operations",
+    "count": 1
+   },
+   {
     "name": "Dashboards and charts",
+    "count": 1
+   },
+   {
+    "name": "Formulas",
     "count": 1
    }
   ]
