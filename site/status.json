@@ -1,10 +1,10 @@
 {
- "updated": "2026-11-27T00:32:54.993113+00:00",
+ "updated": "2026-11-27T18:54:24.834420+00:00",
  "since": "2026-11-09",
  "totals": {
-  "done": 28,
+  "done": 30,
   "review": 4,
-  "progress": 14,
+  "progress": 12,
   "blocked": 13,
   "ready": 16,
   "backlog": 26,
@@ -1079,11 +1079,11 @@
   },
   {
    "name": "Backend",
-   "open": 25,
+   "open": 23,
    "counts": {
     "done": 0,
     "review": 0,
-    "progress": 7,
+    "progress": 5,
     "blocked": 6,
     "ready": 2,
     "backlog": 10
@@ -1225,7 +1225,7 @@
   }
  ],
  "recent": {
-  "total": 24,
+  "total": 26,
   "byFeature": [
    {
     "name": "Tenants and row-level data",
@@ -1240,11 +1240,11 @@
     "count": 4
    },
    {
-    "name": "Deleting with a preview",
-    "count": 2
+    "name": "Other work",
+    "count": 4
    },
    {
-    "name": "Other work",
+    "name": "Deleting with a preview",
     "count": 2
    },
    {
