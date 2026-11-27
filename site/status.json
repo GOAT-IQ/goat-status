@@ -1,14 +1,14 @@
 {
- "updated": "2026-11-26T15:44:58.372562+00:00",
+ "updated": "2026-11-27T00:32:54.993113+00:00",
  "since": "2026-11-09",
  "totals": {
-  "done": 27,
+  "done": 28,
   "review": 4,
-  "progress": 13,
+  "progress": 14,
   "blocked": 13,
   "ready": 16,
-  "backlog": 13,
-  "tasks": 86,
+  "backlog": 26,
+  "tasks": 101,
   "bugs": 1
  },
  "featureStatus": {
@@ -22,9 +22,9 @@
    "name": "Deleting with a preview",
    "total": 10,
    "counts": {
-    "done": 3,
+    "done": 4,
     "review": 4,
-    "progress": 2,
+    "progress": 1,
     "blocked": 1,
     "ready": 0,
     "backlog": 0
@@ -32,7 +32,7 @@
    "status": "progress",
    "tasks": [
     [
-     "progress",
+     "done",
      "Beta",
      "S",
      "P0",
@@ -125,7 +125,7 @@
    "openByArea": [
     {
      "name": "Frontend",
-     "open": 6
+     "open": 5
     },
     {
      "name": "Backend",
@@ -1067,38 +1067,38 @@
  "areas": [
   {
    "name": "Frontend",
-   "open": 25,
+   "open": 31,
    "counts": {
     "done": 0,
     "review": 4,
-    "progress": 4,
+    "progress": 3,
     "blocked": 6,
     "ready": 7,
-    "backlog": 4
+    "backlog": 11
    }
   },
   {
    "name": "Backend",
-   "open": 21,
+   "open": 25,
    "counts": {
     "done": 0,
     "review": 0,
-    "progress": 5,
+    "progress": 7,
     "blocked": 6,
     "ready": 2,
-    "backlog": 8
+    "backlog": 10
    }
   },
   {
    "name": "DevOps",
-   "open": 9,
+   "open": 13,
    "counts": {
     "done": 0,
     "review": 0,
     "progress": 1,
     "blocked": 1,
     "ready": 6,
-    "backlog": 1
+    "backlog": 5
    }
   },
   {
@@ -1118,22 +1118,22 @@
   {
    "name": "Beta",
    "total": 25,
-   "open": 16,
+   "open": 15,
    "counts": {
-    "done": 9,
+    "done": 10,
     "review": 4,
-    "progress": 4,
+    "progress": 3,
     "blocked": 2,
     "ready": 6,
     "backlog": 0
    },
    "sizes": {
-    "S": 8,
     "M": 7,
+    "S": 7,
     "none": 1
    },
    "priorities": {
-    "P0": 14,
+    "P0": 13,
     "P2": 1,
     "P1": 1
    }
@@ -1225,7 +1225,7 @@
   }
  ],
  "recent": {
-  "total": 23,
+  "total": 24,
   "byFeature": [
    {
     "name": "Tenants and row-level data",
@@ -1240,12 +1240,12 @@
     "count": 4
    },
    {
-    "name": "Other work",
+    "name": "Deleting with a preview",
     "count": 2
    },
    {
-    "name": "Deleting with a preview",
-    "count": 1
+    "name": "Other work",
+    "count": 2
    },
    {
     "name": "AI",
